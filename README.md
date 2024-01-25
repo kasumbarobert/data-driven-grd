@@ -1,6 +1,6 @@
 # data-driven-grd
 
-This repository has the code implementation of our approach for gradient descent based GRD and the baselines. We also provide the final trained models and the dataset we used during the design modifications to minimize wcd for goal-recognition-design.  
+This repository has the code implementation of our approach for gradient descent based GRD and the baselines. We also provide the final trained models and the dataset we used during the design modifications to minimize wcd for goal-recognition-design with optimal human behavior in gridworld domain.  
 
 ## Preriquistes
 This project is based on python3 and assumes you have Python 3.10.6.
