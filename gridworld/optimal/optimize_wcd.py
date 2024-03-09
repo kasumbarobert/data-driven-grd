@@ -380,7 +380,7 @@ if __name__ == '__main__':
             env_budgets = []
             env_times = []
             env_max_budget =[]
-            max_budget = 25
+            max_budget = 40
             
             budget_buckets_realized = [[]]*len(max_budgets)
             budget_buckets_wcd_change = [-100]*len(max_budgets)
@@ -431,12 +431,12 @@ if __name__ == '__main__':
                         max_changes_dist=np.round([(blocking_rat*budget)/(unblocking_rat+blocking_rat),
                                                    (unblocking_rat*budget)/(unblocking_rat+blocking_rat) ]).tolist()
                         
-                        if ((blockings.item()<= max_changes_dist[0] and removals.item()<= max_changes_dist[1] ) 
+                        if ((np.array([blockings.item(),removals.item()])<=np.array(max_changes_dist)).all()
                             and experiment != "BOTH_UNIFORM") or (experiment == "BOTH_UNIFORM"  and 
                                                                                        np.sum([blockings.item(),removals.item()])<=np.sum(max_changes_dist)) :
-                            print([blockings.item(),removals.item()], max_changes_dist,blockings.item()<= max_changes_dist[0],removals.item()<= max_changes_dist[1])
+
                             
-                            if wcd_change>budget_buckets_wcd_change[i]: # found a better value
+                            if wcd_change>=budget_buckets_wcd_change[i]: # found a better value
                                 budget_buckets_wcd_change[i] = wcd_change
                                 budget_buckets_realized[i] = [blockings.item(),removals.item()]
                                 budget_buckets_times[i] = time_taken

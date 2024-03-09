@@ -38,6 +38,7 @@ import csv
 import json
 
 
+
 with open(f'{os.path.dirname(os.path.realpath(__file__))}/config.json', 'r') as config_file:
     config = json.load(config_file)
 

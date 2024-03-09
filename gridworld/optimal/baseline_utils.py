@@ -10,6 +10,7 @@ import multiprocessing
 import pdb
 import numpy as np
 
+
 class GRDModel:
     def __init__(self, grid_size = 6, start_pos = (0,0), goal_positions = [],blocked_positions = [], unblocked_positions = [],
                  init_goal_costs = [], compute_wcd = True, n_changes_so_far = [0,0], n_max_changes =[3,5]):
