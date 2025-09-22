@@ -1,0 +1,26 @@
+name: data-driven-grd
+channels:
+  - conda-forge           # This channel has most of the packages you'll need to install 
+dependencies:
+  - python=3.10           # You usually don't have to specify the version of Python, this is just an example
+  - ipykernel            
+  - ipython
+  - pip                   # Necessary if you need to install packages through pip
+  - pip:
+      - torch
+      - numpy
+      - pandas
+      - seaborn
+      - scikit-learn
+      - matplotlib
+      - scipy
+      - jupyterlab
+      - torchvision
+      - torchaudio
+      - gym
+      - pypdf2
+      - imageio
+      - pynvml
+      - gpytorch
+      - torch_geometric
+      - einops
