@@ -1,0 +1,25 @@
+2025-01-19 08:26:27,952 - INFO - Training configuration:
+2025-01-19 08:26:27,953 - INFO - grid_size: 13
+2025-01-19 08:26:27,953 - INFO - epochs: 50
+2025-01-19 08:26:27,953 - INFO - max_data_points: 100000
+2025-01-19 08:26:27,953 - INFO - batch_size: 64
+2025-01-19 08:26:27,953 - INFO - lr: 0.001
+2025-01-19 08:26:27,953 - INFO - run_mode: run
+2025-01-19 08:26:27,953 - INFO - model_type: transformer
+2025-01-19 08:26:27,953 - INFO - compute_device: cuda
+2025-01-19 08:26:27,954 - INFO - model_name: phoenix-rush-5187
+2025-01-19 08:26:27,954 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/phoenix-rush-5187
+2025-01-19 08:26:27,954 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-19 08:26:33,213 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-19 08:26:33,480 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 08:26:33,481 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-19 08:26:33,481 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 08:26:33,481 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-19 08:26:58,800 - INFO - Epoch 1/50, Train Loss: 23.9008, Val Loss: 20.2359
+2025-01-19 08:27:22,826 - INFO - Epoch 2/50, Train Loss: 20.5517, Val Loss: 20.2131
+2025-01-19 08:27:46,819 - INFO - Epoch 3/50, Train Loss: 20.5528, Val Loss: 20.2947
+2025-01-19 08:28:10,654 - INFO - Epoch 4/50, Train Loss: 20.4244, Val Loss: 20.1401
+2025-01-19 08:28:34,510 - INFO - Epoch 5/50, Train Loss: 20.3899, Val Loss: 20.0621
+2025-01-19 08:28:58,888 - INFO - Epoch 6/50, Train Loss: 20.2960, Val Loss: 20.2213
+2025-01-19 08:29:23,725 - INFO - Epoch 7/50, Train Loss: 20.2698, Val Loss: 20.1395
+2025-01-19 08:29:49,296 - INFO - Epoch 8/50, Train Loss: 20.2287, Val Loss: 20.4918

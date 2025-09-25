@@ -1,0 +1,24 @@
+2024-12-14 05:22:45,226 - INFO - Training configuration:
+2024-12-14 05:22:45,227 - INFO - grid_size: 13
+2024-12-14 05:22:45,227 - INFO - epochs: 10
+2024-12-14 05:22:45,227 - INFO - max_data_points: 1000
+2024-12-14 05:22:45,227 - INFO - batch_size: 512
+2024-12-14 05:22:45,227 - INFO - lr: 0.01
+2024-12-14 05:22:45,227 - INFO - run_mode: debug
+2024-12-14 05:22:45,228 - INFO - compute_device: cpu
+2024-12-14 05:22:45,228 - INFO - model_name: debug-jaguar-unleash-3765
+2024-12-14 05:22:45,228 - INFO - model_log_dir: ./models/wcd_prediction/grid13/debug_logs/debug-jaguar-unleash-3765
+2024-12-14 05:22:45,228 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/debug_logs
+2024-12-14 05:22:53,367 - INFO - Total loaded data shapes, X (259234, 4, 13, 13) is and Y is (259234,)
+2024-12-14 05:22:53,854 - INFO - Training Data X Shape: (2, 4, 13, 13), Validation Data X Shape: (48, 4, 13, 13)
+2024-12-14 05:22:53,865 - INFO - Training Data Y Shape: (2,), Validation Data Y Shape: (48,)
+2024-12-14 05:22:59,546 - INFO - Epoch 1/10, Train Loss: 138.0370, Val Loss: 81161680.0000
+2024-12-14 05:23:06,105 - INFO - Epoch 2/10, Train Loss: 56.9998, Val Loss: 6692362752.0000
+2024-12-14 05:23:12,175 - INFO - Epoch 3/10, Train Loss: 917.8802, Val Loss: 4511474.0000
+2024-12-14 05:23:18,495 - INFO - Epoch 4/10, Train Loss: 11.0026, Val Loss: 144.0000
+2024-12-14 05:23:24,776 - INFO - Epoch 5/10, Train Loss: 144.0000, Val Loss: 144.0000
+2024-12-14 05:23:30,894 - INFO - Epoch 6/10, Train Loss: 144.0000, Val Loss: 144.0000
+2024-12-14 05:23:36,814 - INFO - Epoch 7/10, Train Loss: 144.0000, Val Loss: 144.0000
+2024-12-14 05:23:43,037 - INFO - Epoch 8/10, Train Loss: 144.0000, Val Loss: 144.0000
+2024-12-14 05:23:49,745 - INFO - Epoch 9/10, Train Loss: 144.0000, Val Loss: 144.0000
+2024-12-14 05:23:56,042 - INFO - Epoch 10/10, Train Loss: 143.5875, Val Loss: 232107.2500

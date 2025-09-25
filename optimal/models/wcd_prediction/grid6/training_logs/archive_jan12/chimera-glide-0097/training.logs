@@ -1,0 +1,19 @@
+2025-01-03 02:08:17,091 - INFO - Training configuration:
+2025-01-03 02:08:17,092 - INFO - grid_size: 6
+2025-01-03 02:08:17,093 - INFO - epochs: 50
+2025-01-03 02:08:17,093 - INFO - max_data_points: 100000
+2025-01-03 02:08:17,093 - INFO - batch_size: 512
+2025-01-03 02:08:17,093 - INFO - lr: 0.001
+2025-01-03 02:08:17,093 - INFO - run_mode: run
+2025-01-03 02:08:17,093 - INFO - model_type: krr
+2025-01-03 02:08:17,093 - INFO - compute_device: cuda
+2025-01-03 02:08:17,094 - INFO - model_name: chimera-glide-0097
+2025-01-03 02:08:17,094 - INFO - model_log_dir: ./models/wcd_prediction/grid6/training_logs/chimera-glide-0097
+2025-01-03 02:08:17,094 - INFO - summary_file_dir: ./models/wcd_prediction/grid6/training_logs
+2025-01-03 02:08:24,877 - INFO - Total loaded data shapes, X (295570, 4, 6, 6) is and Y is (295570,)
+2025-01-03 02:08:25,160 - INFO - Training Data X Shape: (95000, 4, 6, 6), Validation Data X Shape: (5000, 4, 6, 6)
+2025-01-03 02:08:25,161 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-03 02:08:25,329 - INFO - Augmentation is applied!
+2025-01-03 02:08:25,329 - INFO - Training Data X Shape: (665000, 4, 6, 6), Validation Data X Shape: (5000, 4, 6, 6)
+2025-01-03 02:08:25,329 - INFO - Training Data Y Shape: (665000,), Validation Data Y Shape: (5000,)
+2025-01-03 02:09:58,844 - INFO - Training the Kernel Ridge Regression model...

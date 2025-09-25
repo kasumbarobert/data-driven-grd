@@ -1,0 +1,19 @@
+2025-01-11 22:43:33,649 - INFO - Training configuration:
+2025-01-11 22:43:33,650 - INFO - grid_size: 13
+2025-01-11 22:43:33,650 - INFO - epochs: 50
+2025-01-11 22:43:33,651 - INFO - max_data_points: 10000
+2025-01-11 22:43:33,651 - INFO - batch_size: 512
+2025-01-11 22:43:33,651 - INFO - lr: 0.001
+2025-01-11 22:43:33,651 - INFO - run_mode: run
+2025-01-11 22:43:33,651 - INFO - model_type: krr
+2025-01-11 22:43:33,651 - INFO - compute_device: cuda
+2025-01-11 22:43:33,651 - INFO - model_name: mongoose-rage-5413
+2025-01-11 22:43:33,652 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/mongoose-rage-5413
+2025-01-11 22:43:33,652 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-11 22:43:39,410 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-11 22:43:39,586 - INFO - Training Data X Shape: (9500, 4, 13, 13), Validation Data X Shape: (500, 4, 13, 13)
+2025-01-11 22:43:39,586 - INFO - Training Data Y Shape: (9500,), Validation Data Y Shape: (500,)
+2025-01-11 22:43:39,629 - INFO - Augmentation is applied!
+2025-01-11 22:43:39,629 - INFO - Training Data X Shape: (66500, 4, 13, 13), Validation Data X Shape: (500, 4, 13, 13)
+2025-01-11 22:43:39,630 - INFO - Training Data Y Shape: (66500,), Validation Data Y Shape: (500,)
+2025-01-11 22:43:40,114 - INFO - Training the Kernel Ridge Regression model...

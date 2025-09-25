@@ -1,0 +1,19 @@
+2025-01-03 02:08:17,107 - INFO - Training configuration:
+2025-01-03 02:08:17,108 - INFO - grid_size: 6
+2025-01-03 02:08:17,108 - INFO - epochs: 50
+2025-01-03 02:08:17,108 - INFO - max_data_points: 10000
+2025-01-03 02:08:17,108 - INFO - batch_size: 512
+2025-01-03 02:08:17,108 - INFO - lr: 0.0001
+2025-01-03 02:08:17,109 - INFO - run_mode: run
+2025-01-03 02:08:17,109 - INFO - model_type: krr
+2025-01-03 02:08:17,109 - INFO - compute_device: cuda
+2025-01-03 02:08:17,109 - INFO - model_name: manta-gallop-0097
+2025-01-03 02:08:17,109 - INFO - model_log_dir: ./models/wcd_prediction/grid6/training_logs/manta-gallop-0097
+2025-01-03 02:08:17,109 - INFO - summary_file_dir: ./models/wcd_prediction/grid6/training_logs
+2025-01-03 02:08:24,829 - INFO - Total loaded data shapes, X (295570, 4, 6, 6) is and Y is (295570,)
+2025-01-03 02:08:25,063 - INFO - Training Data X Shape: (9500, 4, 6, 6), Validation Data X Shape: (500, 4, 6, 6)
+2025-01-03 02:08:25,064 - INFO - Training Data Y Shape: (9500,), Validation Data Y Shape: (500,)
+2025-01-03 02:08:25,075 - INFO - Augmentation is applied!
+2025-01-03 02:08:25,075 - INFO - Training Data X Shape: (66500, 4, 6, 6), Validation Data X Shape: (500, 4, 6, 6)
+2025-01-03 02:08:25,075 - INFO - Training Data Y Shape: (66500,), Validation Data Y Shape: (500,)
+2025-01-03 02:08:40,762 - INFO - Training the Kernel Ridge Regression model...

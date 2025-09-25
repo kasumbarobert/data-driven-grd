@@ -1,0 +1,17 @@
+2024-12-14 07:18:06,281 - INFO - Training configuration:
+2024-12-14 07:18:06,283 - INFO - grid_size: 13
+2024-12-14 07:18:06,283 - INFO - epochs: 3
+2024-12-14 07:18:06,283 - INFO - max_data_points: 200
+2024-12-14 07:18:06,283 - INFO - batch_size: 512
+2024-12-14 07:18:06,283 - INFO - lr: 0.01
+2024-12-14 07:18:06,283 - INFO - run_mode: debug
+2024-12-14 07:18:06,284 - INFO - compute_device: cpu
+2024-12-14 07:18:06,284 - INFO - model_name: debug-shark-zoom-0686
+2024-12-14 07:18:06,284 - INFO - model_log_dir: ./models/wcd_prediction/grid13/debug_logs/debug-shark-zoom-0686
+2024-12-14 07:18:06,284 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/debug_logs
+2024-12-14 07:18:15,201 - INFO - Total loaded data shapes, X (259234, 4, 13, 13) is and Y is (259234,)
+2024-12-14 07:18:15,524 - INFO - Training Data X Shape: (190, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2024-12-14 07:18:15,525 - INFO - Training Data Y Shape: (190,), Validation Data Y Shape: (10,)
+2024-12-14 07:18:15,526 - INFO - Augmentation is applied!
+2024-12-14 07:18:15,526 - INFO - Training Data X Shape: (1330, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2024-12-14 07:18:15,527 - INFO - Training Data Y Shape: (1330,), Validation Data Y Shape: (10,)

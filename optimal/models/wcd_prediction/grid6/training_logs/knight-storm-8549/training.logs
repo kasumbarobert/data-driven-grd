@@ -1,0 +1,17 @@
+2025-01-20 15:55:49,319 - INFO - Training configuration:
+2025-01-20 15:55:49,320 - INFO - grid_size: 6
+2025-01-20 15:55:49,320 - INFO - epochs: 50
+2025-01-20 15:55:49,321 - INFO - max_data_points: 1000
+2025-01-20 15:55:49,321 - INFO - batch_size: 512
+2025-01-20 15:55:49,321 - INFO - lr: 0.1
+2025-01-20 15:55:49,321 - INFO - run_mode: run
+2025-01-20 15:55:49,321 - INFO - model_type: transformer
+2025-01-20 15:55:49,321 - INFO - compute_device: cuda
+2025-01-20 15:55:49,321 - INFO - model_name: knight-storm-8549
+2025-01-20 15:55:49,322 - INFO - model_log_dir: ./models/wcd_prediction/grid6/training_logs/knight-storm-8549
+2025-01-20 15:55:49,322 - INFO - summary_file_dir: ./models/wcd_prediction/grid6/training_logs
+2025-01-20 15:55:54,618 - INFO - Total loaded data shapes, X (295570, 4, 6, 6) is and Y is (295570,)
+2025-01-20 15:55:54,762 - INFO - Training Data X Shape: (950, 4, 6, 6), Validation Data X Shape: (50, 4, 6, 6)
+2025-01-20 15:55:54,762 - INFO - Training Data Y Shape: (950,), Validation Data Y Shape: (50,)
+2025-01-20 15:55:54,762 - INFO - Training Data X Shape: (950, 4, 6, 6), Validation Data X Shape: (50, 4, 6, 6)
+2025-01-20 15:55:54,763 - INFO - Training Data Y Shape: (950,), Validation Data Y Shape: (50,)

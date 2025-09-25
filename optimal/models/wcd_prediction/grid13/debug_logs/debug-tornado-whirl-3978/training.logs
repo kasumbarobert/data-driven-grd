@@ -1,0 +1,21 @@
+2025-01-03 00:26:18,518 - INFO - Training configuration:
+2025-01-03 00:26:18,519 - INFO - grid_size: 13
+2025-01-03 00:26:18,519 - INFO - epochs: 3
+2025-01-03 00:26:18,519 - INFO - max_data_points: 200
+2025-01-03 00:26:18,519 - INFO - batch_size: 512
+2025-01-03 00:26:18,520 - INFO - lr: 0.01
+2025-01-03 00:26:18,520 - INFO - run_mode: debug
+2025-01-03 00:26:18,520 - INFO - model_type: cnn
+2025-01-03 00:26:18,520 - INFO - compute_device: cpu
+2025-01-03 00:26:18,520 - INFO - model_name: debug-tornado-whirl-3978
+2025-01-03 00:26:18,520 - INFO - model_log_dir: ./models/wcd_prediction/grid13/debug_logs/debug-tornado-whirl-3978
+2025-01-03 00:26:18,520 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/debug_logs
+2025-01-03 00:26:26,675 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-03 00:26:26,969 - INFO - Training Data X Shape: (190, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2025-01-03 00:26:26,970 - INFO - Training Data Y Shape: (190,), Validation Data Y Shape: (10,)
+2025-01-03 00:26:26,971 - INFO - Augmentation is applied!
+2025-01-03 00:26:26,972 - INFO - Training Data X Shape: (1330, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2025-01-03 00:26:26,972 - INFO - Training Data Y Shape: (1330,), Validation Data Y Shape: (10,)
+2025-01-03 00:26:52,055 - INFO - Epoch 1/3, Train Loss: 114.8868, Val Loss: 125.9000
+2025-01-03 00:27:16,292 - INFO - Epoch 2/3, Train Loss: 128.2131, Val Loss: 28133114.0000
+2025-01-03 00:27:39,996 - INFO - Epoch 3/3, Train Loss: 246.0405, Val Loss: 101.8812

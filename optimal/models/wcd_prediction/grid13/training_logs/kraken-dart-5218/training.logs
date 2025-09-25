@@ -1,0 +1,68 @@
+2025-01-11 22:40:18,190 - INFO - Training configuration:
+2025-01-11 22:40:18,191 - INFO - grid_size: 13
+2025-01-11 22:40:18,192 - INFO - epochs: 50
+2025-01-11 22:40:18,192 - INFO - max_data_points: 10000
+2025-01-11 22:40:18,193 - INFO - batch_size: 512
+2025-01-11 22:40:18,193 - INFO - lr: 0.001
+2025-01-11 22:40:18,193 - INFO - run_mode: run
+2025-01-11 22:40:18,193 - INFO - model_type: gp
+2025-01-11 22:40:18,193 - INFO - compute_device: cuda
+2025-01-11 22:40:18,193 - INFO - model_name: kraken-dart-5218
+2025-01-11 22:40:18,193 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/kraken-dart-5218
+2025-01-11 22:40:18,193 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-11 22:40:23,612 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-11 22:40:23,766 - INFO - Training Data X Shape: (9500, 4, 13, 13), Validation Data X Shape: (500, 4, 13, 13)
+2025-01-11 22:40:23,766 - INFO - Training Data Y Shape: (9500,), Validation Data Y Shape: (500,)
+2025-01-11 22:40:23,804 - INFO - Augmentation is applied!
+2025-01-11 22:40:23,804 - INFO - Training Data X Shape: (66500, 4, 13, 13), Validation Data X Shape: (500, 4, 13, 13)
+2025-01-11 22:40:23,804 - INFO - Training Data Y Shape: (66500,), Validation Data Y Shape: (500,)
+2025-01-11 22:40:24,041 - INFO - Epoch 1/50, Train Loss: 46.0836, Val Loss: 128.3033
+2025-01-11 22:40:24,157 - INFO - Epoch 2/50, Train Loss: 15.9268, Val Loss: 128.2831
+2025-01-11 22:40:24,211 - INFO - Epoch 3/50, Train Loss: 15.8910, Val Loss: 128.2629
+2025-01-11 22:40:24,262 - INFO - Epoch 4/50, Train Loss: 15.8552, Val Loss: 128.2428
+2025-01-11 22:40:24,314 - INFO - Epoch 5/50, Train Loss: 15.8195, Val Loss: 128.2226
+2025-01-11 22:40:24,366 - INFO - Epoch 6/50, Train Loss: 15.7838, Val Loss: 128.2024
+2025-01-11 22:40:24,416 - INFO - Epoch 7/50, Train Loss: 15.7481, Val Loss: 128.1823
+2025-01-11 22:40:24,466 - INFO - Epoch 8/50, Train Loss: 15.7124, Val Loss: 128.1620
+2025-01-11 22:40:24,598 - INFO - Epoch 9/50, Train Loss: 15.6767, Val Loss: 128.1418
+2025-01-11 22:40:24,652 - INFO - Epoch 10/50, Train Loss: 15.6410, Val Loss: 128.1216
+2025-01-11 22:40:24,701 - INFO - Epoch 11/50, Train Loss: 15.6054, Val Loss: 128.1014
+2025-01-11 22:40:24,752 - INFO - Epoch 12/50, Train Loss: 15.5698, Val Loss: 128.0811
+2025-01-11 22:40:24,806 - INFO - Epoch 13/50, Train Loss: 15.5342, Val Loss: 128.0609
+2025-01-11 22:40:24,859 - INFO - Epoch 14/50, Train Loss: 15.4987, Val Loss: 128.0406
+2025-01-11 22:40:24,911 - INFO - Epoch 15/50, Train Loss: 15.4632, Val Loss: 128.0204
+2025-01-11 22:40:24,963 - INFO - Epoch 16/50, Train Loss: 15.4278, Val Loss: 128.0001
+2025-01-11 22:40:25,014 - INFO - Epoch 17/50, Train Loss: 15.3924, Val Loss: 127.9798
+2025-01-11 22:40:25,064 - INFO - Epoch 18/50, Train Loss: 15.3570, Val Loss: 127.9595
+2025-01-11 22:40:25,154 - INFO - Epoch 19/50, Train Loss: 15.3217, Val Loss: 127.9392
+2025-01-11 22:40:25,408 - INFO - Epoch 20/50, Train Loss: 15.2865, Val Loss: 127.9190
+2025-01-11 22:40:25,528 - INFO - Epoch 21/50, Train Loss: 15.2513, Val Loss: 127.8987
+2025-01-11 22:40:25,610 - INFO - Epoch 22/50, Train Loss: 15.2162, Val Loss: 127.8784
+2025-01-11 22:40:25,758 - INFO - Epoch 23/50, Train Loss: 15.1812, Val Loss: 127.8581
+2025-01-11 22:40:25,839 - INFO - Epoch 24/50, Train Loss: 15.1462, Val Loss: 127.8379
+2025-01-11 22:40:25,898 - INFO - Epoch 25/50, Train Loss: 15.1112, Val Loss: 127.8176
+2025-01-11 22:40:25,956 - INFO - Epoch 26/50, Train Loss: 15.0764, Val Loss: 127.7974
+2025-01-11 22:40:26,090 - INFO - Epoch 27/50, Train Loss: 15.0416, Val Loss: 127.7771
+2025-01-11 22:40:26,168 - INFO - Epoch 28/50, Train Loss: 15.0068, Val Loss: 127.7569
+2025-01-11 22:40:26,223 - INFO - Epoch 29/50, Train Loss: 14.9721, Val Loss: 127.7366
+2025-01-11 22:40:26,289 - INFO - Epoch 30/50, Train Loss: 14.9375, Val Loss: 127.7164
+2025-01-11 22:40:26,489 - INFO - Epoch 31/50, Train Loss: 14.9030, Val Loss: 127.6962
+2025-01-11 22:40:26,565 - INFO - Epoch 32/50, Train Loss: 14.8685, Val Loss: 127.6759
+2025-01-11 22:40:26,655 - INFO - Epoch 33/50, Train Loss: 14.8341, Val Loss: 127.6557
+2025-01-11 22:40:26,827 - INFO - Epoch 34/50, Train Loss: 14.7998, Val Loss: 127.6355
+2025-01-11 22:40:26,895 - INFO - Epoch 35/50, Train Loss: 14.7656, Val Loss: 127.6153
+2025-01-11 22:40:26,955 - INFO - Epoch 36/50, Train Loss: 14.7314, Val Loss: 127.5951
+2025-01-11 22:40:27,189 - INFO - Epoch 37/50, Train Loss: 14.6973, Val Loss: 127.5749
+2025-01-11 22:40:27,296 - INFO - Epoch 38/50, Train Loss: 14.6632, Val Loss: 127.5548
+2025-01-11 22:40:27,395 - INFO - Epoch 39/50, Train Loss: 14.6292, Val Loss: 127.5346
+2025-01-11 22:40:27,545 - INFO - Epoch 40/50, Train Loss: 14.5953, Val Loss: 127.5144
+2025-01-11 22:40:27,638 - INFO - Epoch 41/50, Train Loss: 14.5615, Val Loss: 127.4943
+2025-01-11 22:40:27,726 - INFO - Epoch 42/50, Train Loss: 14.5278, Val Loss: 127.4742
+2025-01-11 22:40:27,847 - INFO - Epoch 43/50, Train Loss: 14.4941, Val Loss: 127.4540
+2025-01-11 22:40:27,937 - INFO - Epoch 44/50, Train Loss: 14.4605, Val Loss: 127.4339
+2025-01-11 22:40:28,062 - INFO - Epoch 45/50, Train Loss: 14.4270, Val Loss: 127.4138
+2025-01-11 22:40:28,196 - INFO - Epoch 46/50, Train Loss: 14.3935, Val Loss: 127.3937
+2025-01-11 22:40:28,340 - INFO - Epoch 47/50, Train Loss: 14.3601, Val Loss: 127.3737
+2025-01-11 22:40:28,476 - INFO - Epoch 48/50, Train Loss: 14.3268, Val Loss: 127.3536
+2025-01-11 22:40:28,767 - INFO - Epoch 49/50, Train Loss: 14.2936, Val Loss: 127.3335
+2025-01-11 22:40:28,883 - INFO - Epoch 50/50, Train Loss: 14.2605, Val Loss: 127.3135

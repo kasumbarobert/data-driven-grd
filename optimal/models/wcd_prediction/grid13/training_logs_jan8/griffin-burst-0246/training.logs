@@ -1,0 +1,19 @@
+2025-01-03 02:10:46,065 - INFO - Training configuration:
+2025-01-03 02:10:46,067 - INFO - grid_size: 13
+2025-01-03 02:10:46,067 - INFO - epochs: 50
+2025-01-03 02:10:46,067 - INFO - max_data_points: 10000
+2025-01-03 02:10:46,067 - INFO - batch_size: 512
+2025-01-03 02:10:46,067 - INFO - lr: 0.0001
+2025-01-03 02:10:46,068 - INFO - run_mode: run
+2025-01-03 02:10:46,068 - INFO - model_type: krr
+2025-01-03 02:10:46,068 - INFO - compute_device: cuda
+2025-01-03 02:10:46,068 - INFO - model_name: griffin-burst-0246
+2025-01-03 02:10:46,068 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/griffin-burst-0246
+2025-01-03 02:10:46,068 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-03 02:10:53,865 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-03 02:10:54,143 - INFO - Training Data X Shape: (9500, 4, 13, 13), Validation Data X Shape: (500, 4, 13, 13)
+2025-01-03 02:10:54,143 - INFO - Training Data Y Shape: (9500,), Validation Data Y Shape: (500,)
+2025-01-03 02:10:54,185 - INFO - Augmentation is applied!
+2025-01-03 02:10:54,186 - INFO - Training Data X Shape: (66500, 4, 13, 13), Validation Data X Shape: (500, 4, 13, 13)
+2025-01-03 02:10:54,186 - INFO - Training Data Y Shape: (66500,), Validation Data Y Shape: (500,)
+2025-01-03 02:11:08,456 - INFO - Training the Kernel Ridge Regression model...

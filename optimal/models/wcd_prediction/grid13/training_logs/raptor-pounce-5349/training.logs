@@ -1,0 +1,21 @@
+2025-01-11 22:42:29,337 - INFO - Training configuration:
+2025-01-11 22:42:29,338 - INFO - grid_size: 13
+2025-01-11 22:42:29,338 - INFO - epochs: 50
+2025-01-11 22:42:29,339 - INFO - max_data_points: 1000
+2025-01-11 22:42:29,339 - INFO - batch_size: 512
+2025-01-11 22:42:29,339 - INFO - lr: 0.001
+2025-01-11 22:42:29,339 - INFO - run_mode: run
+2025-01-11 22:42:29,339 - INFO - model_type: krr
+2025-01-11 22:42:29,339 - INFO - compute_device: cuda
+2025-01-11 22:42:29,339 - INFO - model_name: raptor-pounce-5349
+2025-01-11 22:42:29,339 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/raptor-pounce-5349
+2025-01-11 22:42:29,339 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-11 22:42:34,802 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-11 22:42:34,947 - INFO - Training Data X Shape: (950, 4, 13, 13), Validation Data X Shape: (50, 4, 13, 13)
+2025-01-11 22:42:34,947 - INFO - Training Data Y Shape: (950,), Validation Data Y Shape: (50,)
+2025-01-11 22:42:34,951 - INFO - Augmentation is applied!
+2025-01-11 22:42:34,951 - INFO - Training Data X Shape: (6650, 4, 13, 13), Validation Data X Shape: (50, 4, 13, 13)
+2025-01-11 22:42:34,951 - INFO - Training Data Y Shape: (6650,), Validation Data Y Shape: (50,)
+2025-01-11 22:42:35,013 - INFO - Training the Kernel Ridge Regression model...
+2025-01-11 22:42:37,249 - INFO - Validating the model...
+2025-01-11 22:42:37,302 - INFO - Train Loss: 30.2857, Val Loss: 32.3220

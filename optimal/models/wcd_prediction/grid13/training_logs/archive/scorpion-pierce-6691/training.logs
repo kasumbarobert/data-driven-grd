@@ -1,0 +1,17 @@
+2025-01-19 06:04:51,030 - INFO - Training configuration:
+2025-01-19 06:04:51,031 - INFO - grid_size: 13
+2025-01-19 06:04:51,031 - INFO - epochs: 50
+2025-01-19 06:04:51,031 - INFO - max_data_points: 100000
+2025-01-19 06:04:51,031 - INFO - batch_size: 512
+2025-01-19 06:04:51,031 - INFO - lr: 0.1
+2025-01-19 06:04:51,032 - INFO - run_mode: run
+2025-01-19 06:04:51,032 - INFO - model_type: gnn
+2025-01-19 06:04:51,032 - INFO - compute_device: cuda
+2025-01-19 06:04:51,032 - INFO - model_name: scorpion-pierce-6691
+2025-01-19 06:04:51,032 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/scorpion-pierce-6691
+2025-01-19 06:04:51,032 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-19 06:04:58,915 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-19 06:04:59,229 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 06:04:59,229 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-19 06:04:59,230 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 06:04:59,230 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)

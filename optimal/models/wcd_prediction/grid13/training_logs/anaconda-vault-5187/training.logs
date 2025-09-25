@@ -1,0 +1,25 @@
+2025-01-19 08:26:27,954 - INFO - Training configuration:
+2025-01-19 08:26:27,955 - INFO - grid_size: 13
+2025-01-19 08:26:27,955 - INFO - epochs: 50
+2025-01-19 08:26:27,955 - INFO - max_data_points: 100000
+2025-01-19 08:26:27,955 - INFO - batch_size: 64
+2025-01-19 08:26:27,955 - INFO - lr: 0.01
+2025-01-19 08:26:27,956 - INFO - run_mode: run
+2025-01-19 08:26:27,956 - INFO - model_type: transformer
+2025-01-19 08:26:27,956 - INFO - compute_device: cuda
+2025-01-19 08:26:27,956 - INFO - model_name: anaconda-vault-5187
+2025-01-19 08:26:27,956 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/anaconda-vault-5187
+2025-01-19 08:26:27,956 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-19 08:26:33,425 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-19 08:26:33,678 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 08:26:33,679 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-19 08:26:33,679 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 08:26:33,679 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-19 08:26:58,391 - INFO - Epoch 1/50, Train Loss: 21.2035, Val Loss: 20.4522
+2025-01-19 08:27:22,542 - INFO - Epoch 2/50, Train Loss: 20.2837, Val Loss: 20.1762
+2025-01-19 08:27:46,548 - INFO - Epoch 3/50, Train Loss: 20.0431, Val Loss: 20.4440
+2025-01-19 08:28:10,417 - INFO - Epoch 4/50, Train Loss: 19.8423, Val Loss: 20.1401
+2025-01-19 08:28:34,231 - INFO - Epoch 5/50, Train Loss: 19.7425, Val Loss: 20.0560
+2025-01-19 08:28:58,342 - INFO - Epoch 6/50, Train Loss: 19.6616, Val Loss: 20.2818
+2025-01-19 08:29:22,736 - INFO - Epoch 7/50, Train Loss: 19.6280, Val Loss: 20.1388
+2025-01-19 08:29:48,352 - INFO - Epoch 8/50, Train Loss: 19.6004, Val Loss: 20.3388

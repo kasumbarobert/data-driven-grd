@@ -1,0 +1,21 @@
+2025-01-16 01:41:06,694 - INFO - Training configuration:
+2025-01-16 01:41:06,695 - INFO - grid_size: 13
+2025-01-16 01:41:06,696 - INFO - epochs: 3
+2025-01-16 01:41:06,696 - INFO - max_data_points: 200
+2025-01-16 01:41:06,696 - INFO - batch_size: 512
+2025-01-16 01:41:06,696 - INFO - lr: 0.01
+2025-01-16 01:41:06,696 - INFO - run_mode: debug
+2025-01-16 01:41:06,696 - INFO - model_type: krr
+2025-01-16 01:41:06,697 - INFO - compute_device: cpu
+2025-01-16 01:41:06,697 - INFO - model_name: debug-cyclone-thrust-1666
+2025-01-16 01:41:06,697 - INFO - model_log_dir: ./models/wcd_prediction/grid13/debug_logs/debug-cyclone-thrust-1666
+2025-01-16 01:41:06,697 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/debug_logs
+2025-01-16 01:41:15,318 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-16 01:41:15,594 - INFO - Training Data X Shape: (190, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2025-01-16 01:41:15,595 - INFO - Training Data Y Shape: (190,), Validation Data Y Shape: (10,)
+2025-01-16 01:41:15,596 - INFO - Augmentation is applied!
+2025-01-16 01:41:15,596 - INFO - Training Data X Shape: (1330, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2025-01-16 01:41:15,596 - INFO - Training Data Y Shape: (1330,), Validation Data Y Shape: (10,)
+2025-01-16 01:41:15,661 - INFO - Training the Kernel Ridge Regression model...
+2025-01-16 01:41:16,669 - INFO - Validating the model...
+2025-01-16 01:41:16,708 - INFO - Train Loss: 31.2891, Val Loss: 18.8811

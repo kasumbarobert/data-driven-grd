@@ -1,0 +1,25 @@
+2025-01-19 07:03:36,653 - INFO - Training configuration:
+2025-01-19 07:03:36,654 - INFO - grid_size: 13
+2025-01-19 07:03:36,654 - INFO - epochs: 50
+2025-01-19 07:03:36,655 - INFO - max_data_points: 100000
+2025-01-19 07:03:36,655 - INFO - batch_size: 512
+2025-01-19 07:03:36,655 - INFO - lr: 0.01
+2025-01-19 07:03:36,655 - INFO - run_mode: run
+2025-01-19 07:03:36,655 - INFO - model_type: gnn
+2025-01-19 07:03:36,655 - INFO - compute_device: cuda
+2025-01-19 07:03:36,655 - INFO - model_name: mustang-hasten-0216
+2025-01-19 07:03:36,655 - INFO - model_log_dir: ./models/wcd_prediction/grid13/training_logs/mustang-hasten-0216
+2025-01-19 07:03:36,656 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/training_logs
+2025-01-19 07:03:45,315 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-19 07:03:45,632 - INFO - Training Data X Shape: (95000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 07:03:45,632 - INFO - Training Data Y Shape: (95000,), Validation Data Y Shape: (5000,)
+2025-01-19 07:03:46,192 - INFO - Augmentation is applied!
+2025-01-19 07:03:46,193 - INFO - Training Data X Shape: (665000, 4, 13, 13), Validation Data X Shape: (5000, 4, 13, 13)
+2025-01-19 07:03:46,193 - INFO - Training Data Y Shape: (665000,), Validation Data Y Shape: (5000,)
+2025-01-19 07:45:56,866 - INFO - Epoch 1/50, Train Loss: 19.8425, Val Loss: 79.3832
+2025-01-19 07:46:39,786 - INFO - Epoch 2/50, Train Loss: 18.9484, Val Loss: 95.1628
+2025-01-19 07:47:23,013 - INFO - Epoch 3/50, Train Loss: 18.8291, Val Loss: 52.5511
+2025-01-19 07:48:06,319 - INFO - Epoch 4/50, Train Loss: 18.7891, Val Loss: 28.0052
+2025-01-19 07:48:49,072 - INFO - Epoch 5/50, Train Loss: 18.7844, Val Loss: 110.8459
+2025-01-19 07:49:32,139 - INFO - Epoch 6/50, Train Loss: 18.7650, Val Loss: 20.9511
+2025-01-19 07:50:15,062 - INFO - Epoch 7/50, Train Loss: 18.7208, Val Loss: 27.0008

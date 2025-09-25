@@ -1,0 +1,20 @@
+2025-01-19 07:43:05,315 - INFO - Training configuration:
+2025-01-19 07:43:05,318 - INFO - grid_size: 13
+2025-01-19 07:43:05,319 - INFO - epochs: 3
+2025-01-19 07:43:05,319 - INFO - max_data_points: 200
+2025-01-19 07:43:05,320 - INFO - batch_size: 512
+2025-01-19 07:43:05,320 - INFO - lr: 0.01
+2025-01-19 07:43:05,320 - INFO - run_mode: debug
+2025-01-19 07:43:05,321 - INFO - model_type: linear
+2025-01-19 07:43:05,322 - INFO - compute_device: cpu
+2025-01-19 07:43:05,322 - INFO - model_name: debug-minotaur-ascend-2585
+2025-01-19 07:43:05,323 - INFO - model_log_dir: ./models/wcd_prediction/grid13/debug_logs/debug-minotaur-ascend-2585
+2025-01-19 07:43:05,323 - INFO - summary_file_dir: ./models/wcd_prediction/grid13/debug_logs
+2025-01-19 07:43:13,526 - INFO - Total loaded data shapes, X (259769, 4, 13, 13) is and Y is (259769,)
+2025-01-19 07:43:13,806 - INFO - Training Data X Shape: (190, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2025-01-19 07:43:13,806 - INFO - Training Data Y Shape: (190,), Validation Data Y Shape: (10,)
+2025-01-19 07:43:13,807 - INFO - Training Data X Shape: (190, 4, 13, 13), Validation Data X Shape: (10, 4, 13, 13)
+2025-01-19 07:43:13,807 - INFO - Training Data Y Shape: (190,), Validation Data Y Shape: (10,)
+2025-01-19 07:43:13,852 - INFO - Epoch 1/3, Train Loss: 132.3942, Val Loss: 98.1293
+2025-01-19 07:43:13,926 - INFO - Epoch 2/3, Train Loss: 99.7012, Val Loss: 70.3598
+2025-01-19 07:43:13,957 - INFO - Epoch 3/3, Train Loss: 72.6800, Val Loss: 48.4740
