@@ -1,8 +1,7 @@
-# run the jupyter notebooks
+#!/usr/bin/env bash
+set -euo pipefail
 
-# construct_budget_wcd_change-- suboptimal.ipynb
-# analyze_budget_wcd_change-- suboptimal.ipynb
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
-# run the jupyter notebooks
-jupyter nbconvert --to notebook --execute construct_budget_wcd_change-- suboptimal.ipynb
-jupyter nbconvert --to notebook --execute analyze_budget_wcd_change-- suboptimal.ipynb
+"$PYTHON_BIN" prepared_data_for_analysis.py
+"$PYTHON_BIN" result_analysis_suboptimal.py

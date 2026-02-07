@@ -43,9 +43,7 @@ def run_step(cmd: Sequence[str], cwd: Path) -> None:
 def run_generation() -> Path:
     have_training_assets = DATASET_PATH.exists() and MODEL_PATH.exists()
     if not have_training_assets:
-        print(
-            "[figure_5b] Training artefacts trimmed; relying on precomputed analysis outputs."
-        )
+        print("[figure_5b] Training artefacts trimmed; skipping baseline/optimization reruns.")
 
     baseline_true = [
         PYTHON,
@@ -65,8 +63,14 @@ def run_generation() -> Path:
         "--experiment_type",
         "BOTH_UNIFORM",
     ]
-    aggregate_cmd = [PYTHON, "construct_budget_wcd_change_suboptimal.py"]
+    aggregate_cmd = [PYTHON, "prepared_data_for_analysis.py"]
     analysis_cmd = [PYTHON, "result_analysis_suboptimal.py"]
+
+    # Analysis writes to ./plots/{time,wcd_reduction}/... and ./plot_data/...
+    # Ensure those directories exist in trimmed-data checkouts.
+    (SUBOPTIMAL_DIR / "plots" / "time").mkdir(parents=True, exist_ok=True)
+    (SUBOPTIMAL_DIR / "plots" / "wcd_reduction").mkdir(parents=True, exist_ok=True)
+    (SUBOPTIMAL_DIR / "plot_data").mkdir(parents=True, exist_ok=True)
 
     if have_training_assets:
         print("[figure_5b] Running baseline (true wcd)", flush=True)
@@ -75,10 +79,11 @@ def run_generation() -> Path:
         run_step(baseline_pred, SUBOPTIMAL_DIR)
         print("[figure_5b] Running optimization pipeline", flush=True)
         run_step(optimization_cmd, SUBOPTIMAL_DIR)
-        print("[figure_5b] Aggregating results", flush=True)
-        run_step(aggregate_cmd, SUBOPTIMAL_DIR)
-        print("[figure_5b] Generating plots", flush=True)
-        run_step(analysis_cmd, SUBOPTIMAL_DIR)
+
+    print("[figure_5b] Aggregating results", flush=True)
+    run_step(aggregate_cmd, SUBOPTIMAL_DIR)
+    print("[figure_5b] Generating plots", flush=True)
+    run_step(analysis_cmd, SUBOPTIMAL_DIR)
 
     if not SOURCE_PDF.exists():
         raise FileNotFoundError(

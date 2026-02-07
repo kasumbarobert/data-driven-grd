@@ -39,12 +39,9 @@ plt.figure(dpi=150)
 
 # %% [code] cell 1
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
-GRID_SIZE = 10
+GRID_SIZE = 6
 K = 8
 
-# wandb.login(relogin=True)
-# os.environ['WANDB_API_KEY'] = "71f0a53fa4cb62b56494f6554ec1a5e3b898a7dd"
-# wandb.login(key="71f0a53fa4cb62b56494f6554ec1a5e3b898a7dd")
 
 # %% [code] cell 2
 # Check if the WANDB_API_KEY is set
@@ -61,18 +58,7 @@ else:
 # %% [code] cell 4
 #f"simulated_valids_final{GRID_SIZE}.pkl"
 if GRID_SIZE ==10:
-    datasets = [
-        f"archive-data/hyperbol_simulated_envs_K{K}_1.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_2.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_3.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_4.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_5.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_6.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_7.pkl",
-        f"archive-data/hyperbol_simulated_envs_K{K}_8.pkl",
-        f"hyperbol_simulated_envs_K{K}_0.pkl",
-        f"simulated_valids_final10_K8.pkl"
-    ]
+    datasets = [f"simulated_valids_final10_K8.pkl"]
 elif GRID_SIZE == 6:
     datasets = [f"hyperbol_simulated_envs_K{K}_0.pkl",f"hyperbol_simulated_envs_K{K}_1.pkl",f"hyperbol_simulated_envs_K{K}_2.pkl",f"hyperbol_simulated_envs_K{K}_3.pkl", f"simulated_valids_final{GRID_SIZE}_ALL_MODS_K{K}.pkl",
            f"simulated_valids_final{GRID_SIZE}_BLOCKING_ONLY_K{K}.pkl",f"simulated_valids_final{GRID_SIZE}_BOTH_UNIFORM_K{K}.pkl",f"simulated_valids_final{GRID_SIZE}_K{K}.pkl"]
