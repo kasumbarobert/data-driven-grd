@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 # sys.path.insert(0, "./")
 # sys.path.insert(0, "../../")
 import torch
@@ -21,6 +22,14 @@ import argparse
 import pandas as pd
 import numpy as np
 import json
+
+
+TRIMMED_MODEL_IDS = {"aaai25_submission", "aaai25-model-6", "aaai25-model-13"}
+DEFAULT_MODEL_ID_BY_GRID = {6: "aaai25-model-6", 13: "aaai25-model-13"}
+MODEL_ID_ALIASES = {
+    "aaai25-model-6": ["aaai25_submission_1"],
+    "aaai25-model-13": ["aaai25_submission_1"],
+}
 
 
 display_label = {
@@ -75,18 +84,51 @@ plot_markers = {
 
 
 
-def extract_labels(folder_path, grid_size = 6):
-     # List to hold folder names
-    folder_names = []
+def candidate_model_ids(model_id: str) -> list[str]:
+    """Return possible identifiers for locating precomputed artefacts."""
 
-    # Iterate over all entries in the given folder
-    for entry in os.listdir(folder_path):
-        # Check if it's a directory
-        full_path = os.path.join(folder_path, entry)
-        if os.path.isdir(full_path):
-            # Add the folder name to the list
-            if entry in display_label.keys():
-                folder_names.append(entry)
+    candidates = [model_id]
+    candidates.extend(MODEL_ID_ALIASES.get(model_id, []))
+    if "_" in model_id:
+        candidates.append(model_id.split("_")[0])
+    return candidates
+
+
+def resolve_summary_subdir(base: Path, model_id: str) -> Path:
+    """Return the existing summary directory matching ``model_id`` if present."""
+
+    for candidate in candidate_model_ids(model_id):
+        candidate_path = base / candidate
+        if candidate_path.exists():
+            return candidate_path
+    return base / model_id
+
+
+def first_existing_path(*paths: Path) -> Path:
+    """Return the first existing path from ``paths`` (or the last candidate)."""
+
+    for path in paths:
+        if path and path.exists():
+            return path
+    return paths[-1]
+
+
+def extract_labels(folder_path, grid_size=6):
+    """Return experiment labels available under ``folder_path``.
+
+    The original notebook assumed every directory was present; here we guard
+    against trimmed datasets by returning an empty list when the directory is
+    missing.
+    """
+
+    folder = Path(folder_path)
+    if not folder.exists():
+        return []
+
+    folder_names = []
+    for entry in folder.iterdir():
+        if entry.is_dir() and entry.name in display_label:
+            folder_names.append(entry.name)
 
     return folder_names
 
@@ -264,10 +306,18 @@ def initialize_dataframes():
     wcd_summary = pd.DataFrame(columns=columns)
     return time_summary, wcd_summary
 
-def extract_experiment_labels(grid_size, time_out):
-    # Extract experiment labels from specified directories and sort them
-    labels = extract_labels(f"./data/grid{grid_size}", grid_size=grid_size) \
-           + extract_labels(f"./baselines/data/grid{grid_size}/timeout_{time_out}", grid_size=grid_size)
+def extract_experiment_labels(grid_size, time_out, our_dir, baselines_dir, ml_greedy_dir):
+    """Collect the experiment labels available for the requested plots."""
+
+    labels = set()
+    labels.update(extract_labels(our_dir, grid_size=grid_size))
+
+    baseline_timeout_dir = Path(baselines_dir) / f"timeout_{time_out}"
+    labels.update(extract_labels(baseline_timeout_dir, grid_size=grid_size))
+
+    greedy_timeout_dir = Path(ml_greedy_dir) / f"timeout_{time_out}"
+    labels.update(extract_labels(greedy_timeout_dir, grid_size=grid_size))
+
     return sorted(labels)
 
 def set_experiment_parameters(grid_size):
@@ -323,17 +373,23 @@ def filter_times(times, selections, time_out):
 
 def process_experiment_data(base_dir, grid_size, experiment_label, selections, time_out, time_summary, wcd_summary):
     # Load times, budgets, and WCD change data from CSV files
-    times = np.array(read_csv(f'{base_dir}/times_{grid_size}_{experiment_label}.csv'))
-    budgets = np.array(read_csv(f'{base_dir}/budgets_{grid_size}_{experiment_label}.csv')).flatten()
-    wcd_change = np.array(read_csv(f'{base_dir}/wcd_change_{grid_size}_{experiment_label}.csv'))
+    base_dir = Path(base_dir)
+    times_path = base_dir / f"times_{grid_size}_{experiment_label}.csv"
+    if not times_path.exists():
+        print(f"[analyse_and_plot] Skipping {experiment_label}; missing {times_path}")
+        return
+
+    times = np.array(read_csv(times_path))
+    budgets = np.array(read_csv(base_dir / f"budgets_{grid_size}_{experiment_label}.csv")).flatten()
+    wcd_change = np.array(read_csv(base_dir / f"wcd_change_{grid_size}_{experiment_label}.csv"))
     select_idx = len(selections)
 
     if experiment_label in ["ALL_MODS_test","BLOCKING_ONLY_test", "BOTH_UNIFORM_test"]:
         # if experiment_label== "ALL_MODS_test": continue
         print(experiment_label)
-        budgets = read_csv(f'{base_dir}/num_changes_{grid_size}_{experiment_label}.csv')
+        budgets = read_csv(base_dir / f"num_changes_{grid_size}_{experiment_label}.csv")
         budgets = np.array(budgets)
-        max_budgets = np.array(read_csv(f'{base_dir}/budgets_{grid_size}_{experiment_label}.csv'))[0]
+        max_budgets = np.array(read_csv(base_dir / f"budgets_{grid_size}_{experiment_label}.csv"))[0]
         print("Budget",budgets.shape)
         wcd_change = np.array(wcd_change)[0:select_idx][selections]
         times = times[0:select_idx][selections]
@@ -355,9 +411,9 @@ def process_experiment_data(base_dir, grid_size, experiment_label, selections, t
         wcd_change= wcd_change[0:select_idx][selections]# only envs that completed
         n = times.shape[0]
         #ONLY those that completed
-        realized_budgets = np.array(read_csv(f'{base_dir}/num_changes_{grid_size}_{experiment_label}.csv')).sum(axis =2)[0:select_idx][selections]
+        realized_budgets = np.array(read_csv(base_dir / f"num_changes_{grid_size}_{experiment_label}.csv")).sum(axis=2)[0:select_idx][selections]
         #.flatten()
-        given_budget = np.array(read_csv(f'{base_dir}/budgets_{grid_size}_{experiment_label}.csv')*n)[0:select_idx][selections]
+        given_budget = np.array(read_csv(base_dir / f"budgets_{grid_size}_{experiment_label}.csv") * n)[0:select_idx][selections]
         times= times[0:select_idx][selections]
         n = times.shape[0]
         time_summary.loc[experiment_label] = [experiment_label,n,times.flatten(), times.flatten(),given_budget.flatten(),realized_budgets.flatten()]
@@ -410,7 +466,12 @@ def compute_selections(experiment_labels, grid_size, parameters, use_completed_o
         else:
             select_idx = len(selections_all_mods)
             
-        times = np.array(read_csv(f'{base_data_dir}/times_{grid_size}_{experiment_label}.csv'))
+        times_path = Path(base_data_dir) / f"times_{grid_size}_{experiment_label}.csv"
+        if not times_path.exists():
+            print(f"[analyse_and_plot] Skipping {experiment_label}; missing {times_path}")
+            continue
+
+        times = np.array(read_csv(times_path))
         print(experiment_label, "Before:",times.shape)
         times=times[0:select_idx]
         print(times.shape)
@@ -430,7 +491,13 @@ def generate_summaries(grid_size, time_out, use_completed_only, args):
     time_summary, wcd_summary = initialize_dataframes()
 
     # Extract and filter experiment labels
-    experiment_labels = extract_experiment_labels(grid_size, time_out)
+    experiment_labels = extract_experiment_labels(
+        grid_size,
+        time_out,
+        args.our_approach_data_dir,
+        args.greedy_baselines_data_dir,
+        args.ml_greedy_data_dir,
+    )
     experiment_labels = filter_labels(experiment_labels, grid_size, use_completed_only)
 
     # Set experiment-specific parameters and initialize selection arrays
@@ -559,34 +626,52 @@ def main():
     parser.add_argument('--show_title', type=bool, default=False, help="Show title in plots.")
     parser.add_argument('--show_std_err', type=bool, default=True, help="Show standard error in plots.")
     parser.add_argument('--file_type', type=str, default="pdf", help="Output file type (e.g., pdf, png).")
-    parser.add_argument('--wcd_pred_model_id', type=str, default="aaai25_submission_1", help="WCD_pred model")
+    parser.add_argument('--wcd_pred_model_id', type=str, default=None, help="WCD_pred model")
 
     # experiment_label ="BLOCKING_ONLY_EXHAUSTIVE" 
     # cost = 0
     args = parser.parse_args()
 
+    if args.wcd_pred_model_id is None:
+        args.wcd_pred_model_id = DEFAULT_MODEL_ID_BY_GRID.get(args.grid_size, "aaai25-model-13")
+
     print(f"Running plotting generation the following configurations {args}")
 
-    if args.wcd_pred_model_id =="aaai25_submission_1":
-        args.greedy_baselines_data_dir = f"./baselines/data/grid{args.grid_size}" #"./data"
-        args.ml_greedy_data_dir = f"./baselines/data/grid{args.grid_size}/" #"./data"
-        args.our_approach_data_dir =f"./data/grid{args.grid_size}"
-        args.plot_dir = f"./plots/grid{args.grid_size}/{args.wcd_pred_model_id}/"
+    data_root = Path("./data") / f"grid{args.grid_size}"
+    baseline_root = Path("./baselines/data") / f"grid{args.grid_size}"
+    summary_root = Path("./summary_data") / f"grid{args.grid_size}"
+
+    our_summary_base = summary_root / "ml-our-approach"
+    ml_greedy_summary_base = summary_root / "ml-greedy"
+    greedy_summary_base = summary_root / "greedy"
+
+    if "sensitivity_analysis" in args.wcd_pred_model_id:
+        baselines_id = args.wcd_pred_model_id.split("_sensitivity_analysis_")[0]
     else:
-        # args.greedy_baselines_data_dir = f"./summary_data/grid{args.grid_size}/greedy/" #"./data"
-        args.greedy_baselines_data_dir = f"./baselines/data/grid{args.grid_size}" #"./data"
-        # if the id has sentifivty analysis - use the id just before the _sensitivity_analysis_
-        if "sensitivity_analysis" in args.wcd_pred_model_id:
-            baselines_id = args.wcd_pred_model_id.split("_sensitivity_analysis_")[0]
-        else:
-            baselines_id = args.wcd_pred_model_id
-        args.our_approach_data_dir =f"./summary_data/grid{args.grid_size}/ml-our-approach/{args.wcd_pred_model_id}"
-        args.ml_greedy_data_dir = f"./summary_data/grid{args.grid_size}/ml-greedy/{baselines_id}/" #"./data"
-        args.plot_dir = f"./plots/grid{args.grid_size}/{args.wcd_pred_model_id}/"
+        baselines_id = args.wcd_pred_model_id
 
+    args.our_approach_data_dir = str(
+        first_existing_path(
+            resolve_summary_subdir(our_summary_base, args.wcd_pred_model_id),
+            data_root,
+        )
+    )
 
-    if args.wcd_pred_model_id =="aaai25_submission": #ml-greedy was not saved
-        args.ml_greedy_data_dir = f"./baselines/data/grid{args.grid_size}/" #"./data"
+    args.ml_greedy_data_dir = str(
+        first_existing_path(
+            resolve_summary_subdir(ml_greedy_summary_base, baselines_id),
+            baseline_root,
+        )
+    )
+
+    args.greedy_baselines_data_dir = str(
+        first_existing_path(
+            greedy_summary_base,
+            baseline_root,
+        )
+    )
+
+    args.plot_dir = f"./plots/grid{args.grid_size}/{args.wcd_pred_model_id}/"
     
     os.makedirs(args.plot_dir, exist_ok = True)
     os.makedirs(f"{args.plot_dir}/time", exist_ok = True)

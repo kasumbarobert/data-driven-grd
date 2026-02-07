@@ -1,0 +1,275 @@
+{
+  "table_01": {
+    "columns": [
+      "Setting",
+      "Greedy (true wcd)",
+      "Greedy (predicted wcd)",
+      "Our approach"
+    ],
+    "rows": [
+      {
+        "Setting": "Standard (small)",
+        "Greedy (true wcd)": "0.11 ± 0.01",
+        "Greedy (predicted wcd)": "0.47 ± 0.00",
+        "Our approach": "0.50 ± 0.00"
+      },
+      {
+        "Setting": "Standard (large)",
+        "Greedy (true wcd)": "4.95 ± 0.99",
+        "Greedy (predicted wcd)": "2.46 ± 0.49",
+        "Our approach": "1.11 ± 0.11"
+      },
+      {
+        "Setting": "Suboptimal behavior",
+        "Greedy (true wcd)": "183 ± 4",
+        "Greedy (predicted wcd)": "0.59 ± 0.02",
+        "Our approach": "0.71 ± 0.02"
+      },
+      {
+        "Setting": "Complex domain",
+        "Greedy (true wcd)": "531 ± 15",
+        "Greedy (predicted wcd)": "0.41 ± 0.01",
+        "Our approach": "0.80 ± 0.20"
+      }
+    ],
+    "caption": "Time (seconds) comparisons when using true and predicted WCD or our approach.",
+    "label": "tab:runtime_comparison"
+  },
+  "table_02": {
+    "columns": [
+      "Predictive model",
+      "Train MSE",
+      "Validation MSE",
+      "Optimization approach",
+      "Standard",
+      "Individual",
+      "Shared"
+    ],
+    "rows": [
+      {
+        "Predictive model": "Baseline",
+        "Train MSE": "NA",
+        "Validation MSE": "NA",
+        "Optimization approach": "Greedy (true wcd)",
+        "Standard": "7.6 ± 0.4",
+        "Individual": "9.2 ± 0.4",
+        "Shared": "9.8 ± 0.4"
+      },
+      {
+        "Predictive model": "Linear (100K, 0.1)",
+        "Train MSE": "14",
+        "Validation MSE": "15",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "1.9 ± 0.3",
+        "Individual": "1.2 ± 0.2",
+        "Shared": "1.2 ± 0.2"
+      },
+      {
+        "Predictive model": "Linear (100K, 0.1)",
+        "Train MSE": "14",
+        "Validation MSE": "15",
+        "Optimization approach": "Our approach",
+        "Standard": "2.1 ± 0.2",
+        "Individual": "4.8 ± 0.3",
+        "Shared": "5.4 ± 0.3"
+      },
+      {
+        "Predictive model": "Transformer (100K, 0.1)",
+        "Train MSE": "20",
+        "Validation MSE": "20",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "0.0 ± 0.0",
+        "Individual": "0.1 ± 0.1",
+        "Shared": "-0.6 ± 0.1"
+      },
+      {
+        "Predictive model": "Transformer (100K, 0.1)",
+        "Train MSE": "20",
+        "Validation MSE": "20",
+        "Optimization approach": "Our approach",
+        "Standard": "1.5 ± 0.2",
+        "Individual": "4.2 ± 0.2",
+        "Shared": "4.5 ± 0.3"
+      },
+      {
+        "Predictive model": "CNN (1K, 0.001)",
+        "Train MSE": "0.6",
+        "Validation MSE": "13",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "1.9 ± 0.2",
+        "Individual": "0.8 ± 0.2",
+        "Shared": "1.0 ± 0.2"
+      },
+      {
+        "Predictive model": "CNN (1K, 0.001)",
+        "Train MSE": "0.6",
+        "Validation MSE": "13",
+        "Optimization approach": "Our approach",
+        "Standard": "1.9 ± 0.2",
+        "Individual": "3.9 ± 0.3",
+        "Shared": "4.0 ± 0.3"
+      },
+      {
+        "Predictive model": "CNN (10K, 0.001)",
+        "Train MSE": "0.2",
+        "Validation MSE": "4",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "4.3 ± 0.3",
+        "Individual": "3.8 ± 0.3",
+        "Shared": "4.1 ± 0.3"
+      },
+      {
+        "Predictive model": "CNN (10K, 0.001)",
+        "Train MSE": "0.2",
+        "Validation MSE": "4",
+        "Optimization approach": "Our approach",
+        "Standard": "5.1 ± 0.3",
+        "Individual": "8.5 ± 0.3",
+        "Shared": "9.3 ± 0.3"
+      },
+      {
+        "Predictive model": "CNN (100K, 0.001)",
+        "Train MSE": "0.1",
+        "Validation MSE": "0.2",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "7.1 ± 0.4",
+        "Individual": "8.9 ± 0.3",
+        "Shared": "9.8 ± 0.3"
+      },
+      {
+        "Predictive model": "CNN (100K, 0.001)",
+        "Train MSE": "0.1",
+        "Validation MSE": "0.2",
+        "Optimization approach": "Our approach",
+        "Standard": "8.6 ± 0.4",
+        "Individual": "10.4 ± 0.3",
+        "Shared": "10.8 ± 0.3"
+      }
+    ],
+    "caption": "Ablation study (grid size 13) showing WCD reduction across predictive models and optimization strategies.",
+    "label": "tab:ablation_grid13"
+  },
+  "table_04": {
+    "columns": [
+      "Predictive model",
+      "Train MSE",
+      "Validation MSE",
+      "Optimization approach",
+      "Standard",
+      "Individual",
+      "Shared"
+    ],
+    "rows": [
+      {
+        "Predictive model": "Baseline 1",
+        "Train MSE": "NA",
+        "Validation MSE": "NA",
+        "Optimization approach": "Exhaustive search (true wcd)",
+        "Standard": "2.4 ± 0.1",
+        "Individual": "4.5 ± 0.2",
+        "Shared": "4.3 ± 0.1"
+      },
+      {
+        "Predictive model": "Baseline 2",
+        "Train MSE": "NA",
+        "Validation MSE": "NA",
+        "Optimization approach": "Greedy (true wcd)",
+        "Standard": "2.3 ± 0.1",
+        "Individual": "4.2 ± 0.2",
+        "Shared": "4.3 ± 0.1"
+      },
+      {
+        "Predictive model": "Linear (100K, 0.1)",
+        "Train MSE": "1.9",
+        "Validation MSE": "2.1",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "1.1 ± 0.1",
+        "Individual": "1.6 ± 0.1",
+        "Shared": "0.0 ± 0.0"
+      },
+      {
+        "Predictive model": "Linear (100K, 0.1)",
+        "Train MSE": "1.9",
+        "Validation MSE": "2.1",
+        "Optimization approach": "Our approach",
+        "Standard": "0.4 ± 0.0",
+        "Individual": "1.4 ± 0.1",
+        "Shared": "1.4 ± 0.2"
+      },
+      {
+        "Predictive model": "Transformer (100K, 0.1)",
+        "Train MSE": "3.0",
+        "Validation MSE": "3.0",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "0.0 ± 0.0",
+        "Individual": "0.4 ± 0.1",
+        "Shared": "0.0 ± 0.1"
+      },
+      {
+        "Predictive model": "Transformer (100K, 0.1)",
+        "Train MSE": "3.0",
+        "Validation MSE": "3.0",
+        "Optimization approach": "Our approach",
+        "Standard": "0.0 ± 0.0",
+        "Individual": "0.1 ± 0.1",
+        "Shared": "0.4 ± 0.1"
+      },
+      {
+        "Predictive model": "CNN (1K, 0.001)",
+        "Train MSE": "0.1",
+        "Validation MSE": "1.7",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "1.0 ± 0.1",
+        "Individual": "1.4 ± 0.2",
+        "Shared": "1.5 ± 0.1"
+      },
+      {
+        "Predictive model": "CNN (1K, 0.001)",
+        "Train MSE": "0.1",
+        "Validation MSE": "1.7",
+        "Optimization approach": "Our approach",
+        "Standard": "1.0 ± 0.1",
+        "Individual": "2.9 ± 0.2",
+        "Shared": "2.8 ± 0.2"
+      },
+      {
+        "Predictive model": "CNN (10K, 0.001)",
+        "Train MSE": "0.0",
+        "Validation MSE": "0.4",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "2.0 ± 0.1",
+        "Individual": "3.7 ± 0.2",
+        "Shared": "3.6 ± 0.1"
+      },
+      {
+        "Predictive model": "CNN (10K, 0.001)",
+        "Train MSE": "0.0",
+        "Validation MSE": "0.4",
+        "Optimization approach": "Our approach",
+        "Standard": "1.9 ± 0.1",
+        "Individual": "4.1 ± 0.2",
+        "Shared": "4.0 ± 0.1"
+      },
+      {
+        "Predictive model": "CNN (100K, 0.001)",
+        "Train MSE": "0.0",
+        "Validation MSE": "0.0",
+        "Optimization approach": "Greedy (predicted wcd)",
+        "Standard": "2.1 ± 0.4",
+        "Individual": "3.8 ± 0.2",
+        "Shared": "3.5 ± 0.2"
+      },
+      {
+        "Predictive model": "CNN (100K, 0.001)",
+        "Train MSE": "0.0",
+        "Validation MSE": "0.0",
+        "Optimization approach": "Our approach",
+        "Standard": "2.2 ± 0.1",
+        "Individual": "4.3 ± 0.2",
+        "Shared": "4.3 ± 0.1"
+      }
+    ],
+    "caption": "Ablation study (grid size 6) mirroring Table 2 for the smaller grid-world domain.",
+    "label": "tab:ablation_grid6"
+  }
+}

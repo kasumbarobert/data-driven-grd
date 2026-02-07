@@ -71,6 +71,7 @@ def process_experiment(k_values, lambda_values, experiment_label, GRID_SIZE=6, r
 
     # Process each environment's optimization results
     for k in k_values:
+        print(f"[figure_5a] Processing environment: {k}", flush=True)
         # Read JSON file containing optimization results for this environment
         file_path = f"{data_storage_path}/langrange_values/env_{k}.json"
         if os.path.exists(file_path):

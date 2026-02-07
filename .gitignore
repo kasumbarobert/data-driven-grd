@@ -174,3 +174,38 @@ cython_debug/
 
 # remove unnecessary files
 optimal/scripts/
+optimal/data/
+optimal/wcd_optim_results/
+optimal/summary_data/
+optimal/models/
+optimal/plots/
+optimal/logs/
+optimal/tests/
+optimal/tests/
+
+suboptimal/data/
+suboptimal/wcd_optim_results/
+suboptimal/summary_data/
+suboptimal/models/
+suboptimal/plots/
+suboptimal/logs/
+suboptimal/tests/
+suboptimal/tests/
+
+human-exp-data-driven/data/
+human-exp-data-driven/wcd_optim_results/
+human-exp-data-driven/summary_data/
+human-exp-data-driven/models/
+human-exp-data-driven/plots/
+human-exp-data-driven/logs/
+human-exp-data-driven/tests/
+human-exp-data-driven/tests/
+
+manuscript_figures/generated_figures/
+
+# data files
+.pkl
+.pt
+.csv
+.json
+.txt
