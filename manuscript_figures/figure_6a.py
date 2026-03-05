@@ -1,5 +1,6 @@
 """Driver for Figure 6a (human-subject overlapping actions)."""
 
+import argparse
 from pathlib import Path
 import os
 import shutil
@@ -11,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from manuscript_figures.helpers import apply_label_to_pdf
+from manuscript_figures.helpers import PreflightRequirement, apply_label_to_pdf, run_preflight_checks
 
 GENERATED_DIR = ROOT / "manuscript_figures" / "generated_figures"
 SCRIPT_DIR = ROOT / "human-exp-data-driven" / "validation-study"
@@ -21,14 +22,38 @@ TARGET_FILENAME = f"Figure_{FIGURE_ID}.pdf"
 PYTHON = sys.executable
 PLOTS_DIR = SCRIPT_DIR / "plots"
 SOURCE_PDF = PLOTS_DIR / "percentile_overlapping_actions.pdf"
-DATA_DEPENDENCIES = [
-    SCRIPT_DIR / "formal200-reachgoal.csv",
-    SCRIPT_DIR / "model_grid6.pt",
+PRECHECK_REQUIREMENTS = [
+    PreflightRequirement(
+        label="human trajectory csv",
+        path=SCRIPT_DIR / "formal200-reachgoal.csv",
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="human policy model",
+        path=SCRIPT_DIR / "model_grid6.pt",
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="mturk validation layouts: original",
+        path=SCRIPT_DIR / "../data/grid6/mturk_validation/original_environments.pt",
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="mturk validation layouts: optimal model",
+        path=SCRIPT_DIR / "../data/grid6/mturk_validation/our_approach_optimal_model.pt",
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="mturk validation layouts: greedy data-driven",
+        path=SCRIPT_DIR / "../data/grid6/mturk_validation/greed_true_data_driven.pt",
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="mturk validation layouts: our data-driven",
+        path=SCRIPT_DIR / "../data/grid6/mturk_validation/our_approach_data_driven.pt",
+        kind="file",
+    ),
 ]
-
-
-def _has_full_dataset() -> bool:
-    return all(path.exists() for path in DATA_DEPENDENCIES)
 
 
 def _run(cmd: Sequence[str], cwd: Path) -> None:
@@ -55,12 +80,12 @@ def _run(cmd: Sequence[str], cwd: Path) -> None:
 def run_generation() -> Path:
     """Run the human-overlap analysis notebook export and label the output."""
     PLOTS_DIR.mkdir(parents=True, exist_ok=True)
-
-    if not _has_full_dataset():
-        missing_paths = [str(path) for path in DATA_DEPENDENCIES if not path.exists()]
-        raise FileNotFoundError(
-            "[figure_6a] Missing required data for full recomputation: " + ", ".join(missing_paths)
-        )
+    run_preflight_checks(
+        figure_tag="figure_6a",
+        root=ROOT,
+        requirements=PRECHECK_REQUIREMENTS,
+        fail_on_missing=True,
+    )
 
     # Remove stale output so this run must regenerate from source analysis.
     if SOURCE_PDF.exists():
@@ -90,4 +115,26 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Generate Figure 6a.")
+    parser.add_argument(
+        "--preflight-only",
+        action="store_true",
+        help="Run preflight data checks and exit.",
+    )
+    args = parser.parse_args()
+    if args.preflight_only:
+        ok, missing = run_preflight_checks(
+            figure_tag="figure_6a",
+            root=ROOT,
+            requirements=PRECHECK_REQUIREMENTS,
+            fail_on_missing=False,
+        )
+        if not ok:
+            formatted = "\n".join(f"  - {item}" for item in missing)
+            raise SystemExit(
+                "Figure 6a preflight failed. Missing inputs:\n"
+                f"{formatted}"
+            )
+        print("[figure_6a] Preflight checks passed.")
+    else:
+        main()

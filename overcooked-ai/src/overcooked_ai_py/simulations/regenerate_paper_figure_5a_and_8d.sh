@@ -2,5 +2,5 @@
 
 # Regenerate paper figure 5(a) and 8(d)
 
-python prepare_optim_results_for_visualization.py
-python analysis/analyse_visualize_results.py 
+python prepare_results_for_analysis_overcooked.py
+python analysis/analyze_and_plot_overcooked.py 

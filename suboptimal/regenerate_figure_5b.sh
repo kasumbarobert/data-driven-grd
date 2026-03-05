@@ -3,5 +3,5 @@ set -euo pipefail
 
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
-"$PYTHON_BIN" prepared_data_for_analysis.py
-"$PYTHON_BIN" result_analysis_suboptimal.py
+"$PYTHON_BIN" prepare_results_for_analysis_suboptimal.py
+"$PYTHON_BIN" analyze_and_plot_suboptimal.py

@@ -54,7 +54,7 @@ do
     for type in "${experiment_types[@]}"
     do
         echo "Running experiment: $type"
-        python3 baseline_experiments.py --experiment_type $type --max_grid_size "$grid_size"  --timeout_seconds "$timeout" --optimality OPTIMAL
+        python3 run_baseline_experiments_overcooked.py --experiment_type $type --max_grid_size "$grid_size"  --timeout_seconds "$timeout" --optimality OPTIMAL
         echo "Experiment $type (Timeout $timeout) completed."
     done
 done

@@ -1,16 +1,16 @@
-# Gridworld MDP Optimization Framework
+# Optimal Behavioral Assumption
 
-This folder contains the implementation of a machine learning-based optimization framework for Gridworld Markov Decision Processes (MDPs) assuming Optimal Agents. The framework focuses on optimizing Worst-Case Distance (WCD) values through environment modifications using our proposed approach. The key idea is to train a model to predict WCD and the use the trained model to modify the environment to minimize WCD.
+This folder contains the implementation for an optimal behavioral agent in Gridworld environment.
 
 ## Overview
 
 The framework consists of several key components:
 - **MDP Implementation**: Core Gridworld MDP functionality (`mdp.py`)
 - **Utility Functions**: Helper functions and model architectures (`utils.py`)
-- **Model Training**: WCD prediction model training (`train_wcd_pred_model.py`)
-- **Optimization**: Main optimization experiments (`run_optimization_opt.py`)
+- **Model Training**: WCD prediction model training (`train_wcd_predictor_optimal.py`)
+- **Optimization**: Main optimization experiments (`run_optimization_optimal.py`)
 - **Baselines**: Comparison baseline experiments (`baselines/`)
-- **Analysis**: Data processing and visualization (`prepare_data_for_analysis.py`, `analyse_and_plot.py`)
+- **Analysis**: Data processing and visualization (`prepare_results_for_analysis_optimal.py`, `analyze_and_plot_optimal.py`)
 
 ## Directory Structure
 
@@ -18,10 +18,10 @@ The framework consists of several key components:
 optimal/
 ├── mdp.py                           # Core MDP implementation
 ├── utils.py                         # Utility functions and model architectures
-├── train_wcd_pred_model.py          # WCD prediction model training
-├── run_optimization_opt.py          # Main optimization experiments
-├── prepare_data_for_analysis.py     # Data processing for analysis
-├── analyse_and_plot.py              # Visualization and final analysis
+├── train_wcd_predictor_optimal.py          # WCD prediction model training
+├── run_optimization_optimal.py          # Main optimization experiments
+├── prepare_results_for_analysis_optimal.py     # Data processing for analysis
+├── analyze_and_plot_optimal.py              # Visualization and final analysis
 ├── baselines/                       # Baseline experiment implementations
 ├── scripts/                         # Shell scripts for batch execution
 ├── data/                           # Training and test data
@@ -36,15 +36,21 @@ optimal/
 ### Prerequisites
 
 1. **Data**: Ensure training data is available in `data/grid{size}/model_training/`
-2. **Dependencies**: Install required packages (PyTorch, NumPy, Matplotlib, etc.)
+2. **Dependencies**: Create the conda environment from the repository root `environment.yml`
 3. **GPU**: Recommended for faster training and optimization
+
+Environment setup (from repository root):
+```bash
+conda env create -f environment.yml
+conda activate data-driven-grd
+```
 
 ### Step-by-Step Execution
 
 #### 1. Train WCD Prediction Model
 
 ```bash
-python train_wcd_pred_model.py --grid_size 13 --model_type cnn --epochs 100 --batch_size 512 --lr 0.01
+python train_wcd_predictor_optimal.py --grid_size 13 --model_type cnn --epochs 100 --batch_size 512 --lr 0.01
 ```
 
 **Parameters:**
@@ -59,7 +65,7 @@ python train_wcd_pred_model.py --grid_size 13 --model_type cnn --epochs 100 --ba
 #### 2. Run Optimization Experiments
 
 ```bash
-python run_optimization_opt.py --grid_size 13 --experiment_type ALL_MODS --ratio 1_1 --wcd_pred_model_id {model_id} --num_instances 5 --max_iter 20
+python run_optimization_optimal.py --grid_size 13 --experiment_type ALL_MODS --ratio 1_1 --wcd_pred_model_id {model_id} --num_instances 5 --max_iter 20
 ```
 
 **Parameters:**
@@ -75,7 +81,7 @@ python run_optimization_opt.py --grid_size 13 --experiment_type ALL_MODS --ratio
 #### 3. Run Baseline Experiments (Optional)
 
 ```bash
-python baselines/run_baseline_experiments_opt.py --grid_size 13 --experiment_type ALL_MODS --ratio 1_1
+python baselines/run_baseline_experiments_optimal.py --grid_size 13 --experiment_type ALL_MODS --ratio 1_1
 ```
 
 **Output:** Baseline results saved in `./baselines/data/grid{size}/`
@@ -83,7 +89,7 @@ python baselines/run_baseline_experiments_opt.py --grid_size 13 --experiment_typ
 #### 4. Process Data for Analysis
 
 ```bash
-python prepare_data_for_analysis.py --grid_size 13 --wcd_pred_model_id {model_id}
+python prepare_results_for_analysis_optimal.py --grid_size 13 --wcd_pred_model_id {model_id}
 ```
 
 **Output:** Processed data saved in `./summary_data/grid{size}/ml-our-approach/{model_id}/`
@@ -91,7 +97,7 @@ python prepare_data_for_analysis.py --grid_size 13 --wcd_pred_model_id {model_id
 #### 5. Generate Plots and Analysis
 
 ```bash
-python analyse_and_plot.py --grid_size 13 --wcd_pred_model_id {model_id} --time_out 600
+python analyze_and_plot_optimal.py --grid_size 13 --wcd_pred_model_id {model_id} --time_out 600
 ```
 
 **Parameters:**
@@ -101,6 +107,23 @@ python analyse_and_plot.py --grid_size 13 --wcd_pred_model_id {model_id} --time_
 - `--file_type`: Output file type (pdf, png)
 
 **Output:** Plots saved in `./plots/grid{size}/{model_id}/`
+
+## Regenerate Paper Figures (Optimal Setting)
+
+Recommended (from repository root):
+
+```bash
+python manuscript_figures/generate_all.py 3a 3b 4a 4b 8a 8b 9a 9b
+```
+
+Outputs are written to `manuscript_figures/generated_figures/`.
+
+Local scripts (from `optimal/`) for the main-text figures:
+
+```bash
+bash regenerate_figure_3a_9a_9b.sh
+bash regenerate_figure_3b_4a_4b.sh
+```
 
 ## Experiment Types
 
@@ -127,23 +150,6 @@ The framework supports multiple model types for WCD prediction:
 - **KRR**: Kernel Ridge Regression
 - **GP**: Gaussian Process
 
-## Key Features
-
-### Optimization Algorithm
-- Gradient-based optimization using trained WCD prediction models
-- Constraint handling for valid environment modifications
-- Multiple experiment types with different modification strategies
-
-### Analysis Capabilities
-- Comprehensive performance comparison between approaches
-- Statistical analysis with standard errors
-- Visualization of WCD reduction vs. modification budget
-- Time complexity analysis
-
-### Scalability
-- Batch processing for multiple environment instances
-- GPU acceleration for model training and optimization
-- Configurable parameters for different grid sizes
 
 ## Output Files
 
@@ -161,38 +167,3 @@ The framework supports multiple model types for WCD prediction:
 - `plots/grid{size}/{model_id}/`: Generated plots
 - `summary_data/grid{size}/`: Processed analysis data
 - Performance comparison tables
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Missing Data**: Ensure training data exists in `data/grid{size}/model_training/`
-2. **GPU Memory**: Reduce batch size or use CPU if GPU memory is insufficient
-3. **Model Not Found**: Verify the `wcd_pred_model_id` matches a trained model
-4. **Timeout Errors**: Increase `--time_out` parameter for longer experiments
-
-### Debug Mode
-
-Use debug mode for testing with smaller datasets:
-```bash
-python train_wcd_pred_model.py --run_mode debug
-```
-
-## Advanced Usage
-
-### Custom Model Training
-```bash
-python train_wcd_pred_model.py --model_type transformer --epochs 200 --lr 0.001
-```
-
-### Sensitivity Analysis
-```bash
-python run_optimization_opt.py --sensitivity_analysis True --noise_level 0.001
-```
-
-### Batch Processing
-Use the shell scripts in `scripts/` for batch processing multiple experiments.
-
-## Dependencies
-
-Ensure to install the packages in `../environment.yml`. We encourage using conda to setup the enviroment 

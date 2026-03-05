@@ -1,10 +1,6 @@
-
-
-
-
 ## Human Subject Experiment
 
-We recruit 1490 workers from Amazon Mechanical Turk. Anynomous experiment data is stored in 'human-subject-experiments'. Experiment details could be found in Appendix.pdf.
+We recruited 1,490 workers from Amazon Mechanical Turk. Anonymous experiment data is stored in `human-subject-experiment/`. Experiment details are described in the paper (Appendix Section D).
 
-- experiment1.csv: anynomous data in the first experiment, where human workers play a single player navigation game.
-- experiment2.csv: anynomous data in the second experiment, where human workers are asked to predict the goal of the player.
+- `experiment1.csv`: anonymous data for the first experiment, where workers play a single-player navigation game.
+- `experiment2.csv`: anonymous data for the second experiment, where workers predict the player's goal.

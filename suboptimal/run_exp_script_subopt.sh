@@ -50,7 +50,7 @@ do
     for label in "${experiment_labels[@]}"
     do
         echo "Running experiment: $label"
-        python3 baseline_experiments_subopt.py --experiment_type $label --grid_size "$grid_size"  --timeout_seconds "$timeout"
+        python3 run_baseline_experiments_suboptimal.py --experiment_type $label --grid_size "$grid_size"  --timeout_seconds "$timeout"
         echo "Experiment $label (Timeout $timeout) completed."
     done
 done

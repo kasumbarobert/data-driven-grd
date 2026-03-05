@@ -6,18 +6,53 @@ It invokes the data-preparation and plotting scripts directly, then stages the
 result as `generated_figures/Figure_5a.pdf`.
 """
 
+import argparse
 from pathlib import Path
 import os
 import shutil
 import subprocess
+import sys
 from typing import Sequence
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from manuscript_figures.helpers import PreflightRequirement, run_preflight_checks
+
 SCRIPT_DIR = ROOT / "overcooked-ai" / "src" / "overcooked_ai_py" / "simulations"
 GENERATED_DIR = ROOT / "manuscript_figures" / "generated_figures"
 RAW_DATA_DIR = SCRIPT_DIR / "data" / "grid6" / "optim_runs"
 ANALYSIS_DIR = SCRIPT_DIR / "analysis"
+PREP_SCRIPT = SCRIPT_DIR / "prepare_results_for_analysis_overcooked.py"
+ANALYSIS_SCRIPT = ANALYSIS_DIR / "analyze_and_plot_overcooked.py"
 TARGET_RELATIVE = Path("plots") / "wcd_reduction" / "overcooked_wcd_reduction.pdf"
+BASELINE_RAW_DIR = SCRIPT_DIR / "baselines" / "data" / "grid6" / "optim_runs" / "timeout_18000"
+PRECHECK_REQUIREMENTS = [
+    PreflightRequirement(
+        label="prepare script",
+        path=PREP_SCRIPT,
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="analysis script",
+        path=ANALYSIS_SCRIPT,
+        kind="file",
+    ),
+    PreflightRequirement(
+        label="our approach raw JSONs",
+        path=RAW_DATA_DIR / "CONSTRAINED" / "langrange_values",
+        kind="glob",
+        pattern="env_*.json",
+    ),
+    PreflightRequirement(
+        label="baseline raw JSONs",
+        path=BASELINE_RAW_DIR,
+        kind="glob",
+        pattern="env_*.json",
+        recursive=True,
+    ),
+]
 
 
 def _has_raw_data() -> bool:
@@ -36,10 +71,16 @@ def main() -> None:
     env = os.environ.copy()
     env.setdefault("MPLBACKEND", "Agg")
     env.setdefault("QT_QPA_PLATFORM", "offscreen")
+    run_preflight_checks(
+        figure_tag="figure_5a",
+        root=ROOT,
+        requirements=PRECHECK_REQUIREMENTS,
+        fail_on_missing=False,
+    )
 
     if _has_raw_data():
-        _run(["python", "prepare_optim_results_for_visualization.py"], SCRIPT_DIR, env, "data preparation")
-        _run(["python", "analyse_visualize_results.py"], ANALYSIS_DIR, env, "analysis and plotting")
+        _run(["python", "prepare_results_for_analysis_overcooked.py"], SCRIPT_DIR, env, "data preparation")
+        _run(["python", "analyze_and_plot_overcooked.py"], ANALYSIS_DIR, env, "analysis and plotting")
     else:
         print("[figure_5a] Raw Overcooked-AI optimisation data trimmed; using precomputed plots.")
 
@@ -51,4 +92,26 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Generate Figure 5a.")
+    parser.add_argument(
+        "--preflight-only",
+        action="store_true",
+        help="Run preflight data checks and exit.",
+    )
+    args = parser.parse_args()
+    if args.preflight_only:
+        ok, missing = run_preflight_checks(
+            figure_tag="figure_5a",
+            root=ROOT,
+            requirements=PRECHECK_REQUIREMENTS,
+            fail_on_missing=False,
+        )
+        if not ok:
+            formatted = "\n".join(f"  - {item}" for item in missing)
+            raise SystemExit(
+                "Figure 5a preflight failed. Missing inputs:\n"
+                f"{formatted}"
+            )
+        print("[figure_5a] Preflight checks passed.")
+    else:
+        main()

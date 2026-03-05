@@ -1,13 +1,13 @@
 # Goal Recognition Design for General Behavioral Agents using Machine Learning
 
-This repository contains the code and data to reproduce results for the paper "Goal Recognition Design for General Behavioral Agents using Machine Learning". We provide code for minimizing Worst-Case Distance (WCD) in goal recognition design across different behavioral settings: optimal agents, suboptimal agents with hyperbolic discounting, and human behavior data.
+This repository contains the code and data to reproduce results for the paper "Goal Recognition Design for General Behavioral Agents using Machine Learning". We provide code for modifying environment designs to mininimize the Worst-Case Distinctiveness (WCD) using our Lagrange-based Gradient Descent approach. The provided code covers the different behavioral settings in our paper: optimal agents, suboptimal agents with hyperbolic discounting, and human behavior data.
 
 ## Overview
 
 The repository provides:
 - **Simulated data generation** for environments with corresponding WCD values
-- **WCD prediction model training** with detailed hyperparameters and notebooks
-- **Optimization code** using trained WCD predictive models to minimize environment WCD
+- **WCD prediction model training** scripts
+- **Optimization code** using trained WCD predictive models to modify environments
 - **Baseline implementations** including Greedy, Exhaustive Search, and Pruned-Reduce methods
 - **Multiple behavioral settings**: optimal agents, suboptimal agents, and human behavior data
 - **Overcooked-AI domain extension** with specific implementations
@@ -23,21 +23,21 @@ The repository provides:
 ```
 ├── optimal/                    # Optimal agent experiments
 │   ├── README.md              # Detailed guide for optimal setting
-│   ├── train_wcd_pred_model.py # WCD prediction model training
-│   ├── run_optimization_opt.py # Main optimization experiments
+│   ├── train_wcd_predictor_optimal.py # WCD prediction model training
+│   ├── run_optimization_optimal.py # Main optimization experiments
 │   ├── baselines/             # Baseline experiment implementations
 │   └── models/                # Trained models for grid sizes 6 and 13
 │
 ├── suboptimal/                # Suboptimal agent experiments
 │   ├── README.md              # Detailed guide for suboptimal setting
-│   ├── train_wcd_pred_model.py # WCD prediction model training
-│   ├── run_optimization_subopt.py # Main optimization experiments
-│   ├── simulate_data_generation.py # Training data generation
+│   ├── train_wcd_predictor_suboptimal.py # WCD prediction model training
+│   ├── run_optimization_suboptimal.py # Main optimization experiments
+│   ├── simulate_training_data_suboptimal.py # Training data generation
 │   └── models/                # Trained models for grid size 6
 │
 ├── human-exp-data-driven/     # Human behavior experiments
 │   ├── README.md              # Detailed guide for human behavior setting
-│   ├── run_optimization_data_driven.py # Main optimization experiments
+│   ├── run_optimization_human_bhvr.py # Main optimization experiments
 │   └── baselines/             # Baseline experiment implementations
 │
 ├── overcooked-ai/             # Overcooked-AI domain extension
@@ -52,19 +52,16 @@ The repository provides:
 **Optimal Agents**: For environments with optimal agent behavior
 - **Use case**: Standard gridworld optimization with optimal pathfinding
 - **Key features**: Multiple model architectures (CNN, Transformer, GNN, etc.)
-- **Grid sizes**: 6 and 13 supported
 - **See**: `optimal/README.md` for detailed instructions
 
 **Suboptimal Agents**: For environments with hyperbolic discounting agents
 - **Use case**: Realistic agent behavior with time discounting
 - **Key features**: K parameter controls suboptimality level
-- **Grid sizes**: 6 and 10 supported
 - **See**: `suboptimal/README.md` for detailed instructions
 
 **Human Behavior**: For data-driven human behavior experiments
 - **Use case**: Real human behavior from MTurk experiments
 - **Key features**: Uses actual human trajectory data
-- **Grid sizes**: 6 and 13 supported
 - **See**: `human-exp-data-driven/README.md` for detailed instructions
 
 **Overcooked-AI**: For the Overcooked-AI domain
@@ -74,46 +71,35 @@ The repository provides:
 
 ## Install dependencies
 
-Install the required packages using conda:
+Install the required packages using the repository’s `environment.yml`:
 ```bash
 conda env create -f environment.yml
-conda activate gridworld-mdp
+conda activate data-driven-grd
 ```
 
 ## Regenerate Paper Figures
-To regenerate the figures in the paper, run the following corresponding commands. 
-
-
-### Figure 3(a), 9(b) and 9(b)
-```bash
-cd optimal
-bash regenerate_figure_3a_9a_9b.sh
-```
-
-### Figures 3(b), 4(a) and 4(b)
-```bash
-cd optimal
-bash regenerate_figure_3b_4a_4b.sh
-```
-
-### Figure 5(b)
-```bash
-cd suboptimal
-bash regenerate_figure_5b.sh
-```
-
-### Figures 5(a) and 8(d)
+Use the unified figure driver from the repository root:
 
 ```bash
-cd overcooked-ai/src/overcooked_ai_py/simulations
-bash regenerate_paper_figure_5a_and_8d.sh
+python manuscript_figures/generate_all.py --list
 ```
 
-### Figure 6(a) and 6(b)
+Generate specific figures:
+
 ```bash
-cd overcooked-ai/src/overcooked_ai_py/simulations
-bash regenerate_figure_6a_and_6b.sh
+python manuscript_figures/generate_all.py 3a 3b 4a 4b 5a 5b 6a 6b 8a 8b 8c 8d 9a 9b
 ```
+
+Generate all available figure drivers:
+
+```bash
+python manuscript_figures/generate_all.py
+```
+
+Generated outputs are saved in `manuscript_figures/generated_figures/`.
+
+Notes:
+- Use an environment where `python` has the project dependencies (especially PyTorch) if you want full recomputation from raw data.
 
 ## Citation
 
@@ -127,8 +113,3 @@ If you use this framework in your research, please cite the following.
   year={2025}
 }
 ```
-
-
-
-
-

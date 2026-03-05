@@ -55,13 +55,13 @@ def run_optimization(assumed_behavior="OPTIMAL"):
         loaded_dataset = pickle.load(f)
 
 
-    device ="cuda:0"
-    model = torch.load(model_label)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = torch.load(model_label, map_location=device)
     model = model.to(device).eval()
 
     for i,k in enumerate(env_ids):
         x, y = loaded_dataset[k*interval]  # Get a specific data sample
-        x = x.unsqueeze(0).float().cuda()
+        x = x.unsqueeze(0).float().to(device)
         lambdas = eval(best_lambdas[i][-1])
         print(k,k*interval, lambdas)
         # print(human_best_lambdas[i])

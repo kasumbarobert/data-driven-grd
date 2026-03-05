@@ -6,6 +6,7 @@ import argparse
 import importlib
 import pkgutil
 import re
+import subprocess
 import sys
 import traceback
 from dataclasses import dataclass
@@ -112,6 +113,25 @@ def run_module(module_name: str) -> RunResult:
     return RunResult(module_name, figure_id, "ok")
 
 
+def run_module_preflight(module_name: str) -> RunResult:
+    figure_id = _figure_id(module_name)
+    cmd = [sys.executable, "-m", f"{PACKAGE_NAME}.{module_name}", "--preflight-only"]
+    try:
+        subprocess.run(cmd, cwd=ROOT, check=True)
+    except subprocess.CalledProcessError as exc:
+        return RunResult(
+            module_name,
+            figure_id,
+            "error",
+            f"Preflight command failed with exit code {exc.returncode}.",
+        )
+    except Exception as exc:  # noqa: BLE001
+        detail = "".join(traceback.format_exception(exc))
+        return RunResult(module_name, figure_id, "error", detail)
+
+    return RunResult(module_name, figure_id, "ok")
+
+
 def print_summary(results: Sequence[RunResult]) -> None:
     if not results:
         print("No figures selected.")
@@ -133,6 +153,11 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
         "--list",
         action="store_true",
         help="Only list available figure driver modules without executing them.",
+    )
+    parser.add_argument(
+        "--preflight-only",
+        action="store_true",
+        help="Run each selected figure in --preflight-only mode (no generation).",
     )
     return parser.parse_args(argv)
 
@@ -157,17 +182,23 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for module_name in modules_to_run:
         figure_id = _figure_id(module_name)
         print(f"=== Figure {figure_id} ({module_name}) ===", flush=True)
-        result = run_module(module_name)
+        result = run_module_preflight(module_name) if args.preflight_only else run_module(module_name)
         results.append(result)
 
         if result.status == "ok":
-            print(f"Figure {figure_id} generated successfully.\n", flush=True)
+            if args.preflight_only:
+                print(f"Figure {figure_id} preflight passed.\n", flush=True)
+            else:
+                print(f"Figure {figure_id} generated successfully.\n", flush=True)
         elif result.status == "not-implemented":
             print(f"Skipped Figure {figure_id}: {result.detail}\n", flush=True)
         elif result.status == "missing-main":
             print(f"Skipped Figure {figure_id}: {result.detail}\n", flush=True)
         else:
-            print(f"Error while generating Figure {figure_id}:")
+            if args.preflight_only:
+                print(f"Error while running preflight for Figure {figure_id}:")
+            else:
+                print(f"Error while generating Figure {figure_id}:")
             if result.detail:
                 print(result.detail.rstrip())
             print()

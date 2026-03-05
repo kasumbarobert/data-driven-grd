@@ -41,6 +41,7 @@ plt.figure(dpi=150)
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
 GRID_SIZE = 6
 K = 8
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 # %% [code] cell 2
@@ -334,7 +335,7 @@ def evaluate_and_log(best_model, x_val, y_val, epoch, wandb=None):
 
         for i in range(n_batches):
             x_batch = x[i * batch_size: (i + 1) * batch_size]
-            preds_batch = model(x_batch.cuda()).detach()
+            preds_batch = model(x_batch.to(device)).detach()
             all_preds.append(preds_batch)
 
         return torch.cat(all_preds, dim=0).cpu()
@@ -407,15 +408,15 @@ else:
     num_epochs = 20# 3 for 6,7,8
 
 # %% [code] cell 19
-# model = CustomCNN(n_channels=x_train.shape[1],drop_out=dropout,size = GRID_SIZE//2).cuda() #GRID_SIZE//2
-model = CNN4(n_channels=x_test.shape[1],drop_out=dropout).cuda() #
+# model = CustomCNN(n_channels=x_train.shape[1],drop_out=dropout,size = GRID_SIZE//2).to(device) #GRID_SIZE//2
+model = CNN4(n_channels=x_test.shape[1],drop_out=dropout).to(device) #
 # model = torch.load("models/wcd_nn_oracle_july6.pt")
 
 # %% [code] cell 20
 # # init_model = torch.load("models/wcd_10_init.pt")
-init_model = torch.load(f"models/wcd_nn_model_10_K4_best.pt")
+init_model = torch.load(f"models/wcd_nn_model_10_K4_best.pt", map_location=device)
 
-model = init_model
+model = init_model.to(device)
 model.dropout1 = nn.Dropout(dropout)
 
 # %% [code] cell 21
@@ -427,7 +428,7 @@ for parameter in model.parameters():
 print(f"Total number of parameters: {total_params}") #636673
 
 # %% [code] cell 22
-# model = VGGNet(n_channels = x_train.shape[1]).cuda()
+# model = VGGNet(n_channels = x_train.shape[1]).to(device)
 
 # %% [code] cell 24
 use_wandb = False
@@ -458,11 +459,11 @@ def train():
 
             # print(inputs[:,0,:,:].mean())
             # forward pass
-            outputs = model(inputs.cuda())
+            outputs = model(inputs.to(device))
             # targets = targets.cuda()
 
             # compute loss and perform backpropagation
-            y_true = targets.view(-1, 1).cuda()
+            y_true = targets.view(-1, 1).to(device)
             loss = nn.MSELoss()(outputs, y_true)
             mse_loss = loss.item()
 
@@ -529,16 +530,16 @@ wandb.finish()
 # nn.MSELoss()(best_model(x_test),y_test.view(-1, 1))
 
 # %% [code] cell 26
-nn.HuberLoss()(best_model(x_test),y_test.view(-1, 1).cuda())
+nn.HuberLoss()(best_model(x_test.to(device)), y_test.view(-1, 1).to(device))
 
 # %% [code] cell 27
-torch.mean(abs(best_model(x_test)-y_test.view(-1, 1)))
+torch.mean(abs(best_model(x_test.to(device)) - y_test.view(-1, 1).to(device)))
 
 # %% [code] cell 28
-torch.mean(abs(best_model(x_test)-y_test.view(-1, 1)))
+torch.mean(abs(best_model(x_test.to(device)) - y_test.view(-1, 1).to(device)))
 
 # %% [code] cell 29
-sns.kdeplot(best_model(x_test).cpu().detach().numpy(), fill=True,label="Pred")
+sns.kdeplot(best_model(x_test.to(device)).cpu().detach().numpy(), fill=True,label="Pred")
 sns.kdeplot(y_test.view(-1, 1).cpu().detach().numpy(), fill=True,label="True")
 plt.legend()
 

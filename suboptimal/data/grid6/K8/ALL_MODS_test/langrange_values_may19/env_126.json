@@ -1,0 +1,773 @@
+{
+    "env_id": 126,
+    "lambda_pairs": [
+        {
+            "lambdas": [
+                0,
+                0
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13161693082580567
+        },
+        {
+            "lambdas": [
+                0,
+                0.0001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13118801580200196
+        },
+        {
+            "lambdas": [
+                0,
+                0.0002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1465288208557129
+        },
+        {
+            "lambdas": [
+                0,
+                0.0005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13023028836975098
+        },
+        {
+            "lambdas": [
+                0,
+                0.001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.12970576749572754
+        },
+        {
+            "lambdas": [
+                0,
+                0.002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1415720985961914
+        },
+        {
+            "lambdas": [
+                0,
+                0.005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1290451096130371
+        },
+        {
+            "lambdas": [
+                0,
+                0.01
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13507781492004395
+        },
+        {
+            "lambdas": [
+                0,
+                0.02
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13415894971618653
+        },
+        {
+            "lambdas": [
+                0,
+                0.05
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                4,
+                0
+            ],
+            "time_taken": 0.11567864881286621
+        },
+        {
+            "lambdas": [
+                0,
+                0.1
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                2,
+                0
+            ],
+            "time_taken": 0.1145480679107666
+        },
+        {
+            "lambdas": [
+                0,
+                0.2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.0942996548248291
+        },
+        {
+            "lambdas": [
+                0,
+                0.5
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.11838303075561524
+        },
+        {
+            "lambdas": [
+                0,
+                1.0
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.11330662236938477
+        },
+        {
+            "lambdas": [
+                0,
+                2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.07755003438720703
+        },
+        {
+            "lambdas": [
+                0,
+                5
+            ],
+            "wcd_change": 0,
+            "num_changes": [
+                0,
+                0
+            ],
+            "time_taken": 0.12122188077697754
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1876679466796875
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.0001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.17112455831298828
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.0002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13196526036987305
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.0005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.18789396749267578
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13332043157348633
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1698597477508545
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.18767271505126953
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.01
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1780234383178711
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.02
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.17728171811828614
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.05
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                4,
+                0
+            ],
+            "time_taken": 0.11398849950561524
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.1
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                2,
+                0
+            ],
+            "time_taken": 0.11009560094604492
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.07655749784240723
+        },
+        {
+            "lambdas": [
+                0.0001,
+                0.5
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.07564721570739746
+        },
+        {
+            "lambdas": [
+                0.0001,
+                1.0
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.0797720955444336
+        },
+        {
+            "lambdas": [
+                0.0001,
+                2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.08112917409667969
+        },
+        {
+            "lambdas": [
+                0.0001,
+                5
+            ],
+            "wcd_change": 0,
+            "num_changes": [
+                0,
+                0
+            ],
+            "time_taken": 0.09100947843322754
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1350554035736084
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.0001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1511541412902832
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.0002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1304012344909668
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.0005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.17504249082336426
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1311336563659668
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.166837315423584
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.12938724027404785
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.01
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13280997739562989
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.02
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.15304289327392578
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.05
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                4,
+                0
+            ],
+            "time_taken": 0.16020570264587403
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.1
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                2,
+                0
+            ],
+            "time_taken": 0.12896452413330078
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.07665167318115235
+        },
+        {
+            "lambdas": [
+                0.0002,
+                0.5
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.08169208036193848
+        },
+        {
+            "lambdas": [
+                0.0002,
+                1.0
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.0772393749786377
+        },
+        {
+            "lambdas": [
+                0.0002,
+                2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.07901273236999512
+        },
+        {
+            "lambdas": [
+                0.0002,
+                5
+            ],
+            "wcd_change": 0,
+            "num_changes": [
+                0,
+                0
+            ],
+            "time_taken": 0.1255653904510498
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.12958417402038575
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.0001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.12816677556762696
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.0002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13372550473937989
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.0005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1645494507385254
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.001
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1333471344543457
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.002
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1314226196838379
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.005
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.1376777695251465
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.01
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.13704643712768555
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.02
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                3,
+                1
+            ],
+            "time_taken": 0.14797626004943848
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.05
+            ],
+            "wcd_change": -2,
+            "num_changes": [
+                4,
+                0
+            ],
+            "time_taken": 0.1332255409790039
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.1
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                2,
+                0
+            ],
+            "time_taken": 0.11657987104187012
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.09741054044494629
+        },
+        {
+            "lambdas": [
+                0.0005,
+                0.5
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.11741362081298828
+        },
+        {
+            "lambdas": [
+                0.0005,
+                1.0
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.10587535367736817
+        },
+        {
+            "lambdas": [
+                0.0005,
+                2
+            ],
+            "wcd_change": 2,
+            "num_changes": [
+                1,
+                0
+            ],
+            "time_taken": 0.07672701345214844
+        },
+        {
+            "lambdas": [
+                0.0005,
+                5
+            ],
+            "wcd_change": 0,
+            "num_changes": [
+                0,
+                0
+            ],
+            "time_taken": 0.08796082006225586
+        }
+    ]
+}
