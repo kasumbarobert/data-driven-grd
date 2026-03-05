@@ -1,6 +1,6 @@
 # Goal Recognition Design for General Behavioral Agents using Machine Learning
 
-This repository contains the code and data to reproduce results for the paper "Goal Recognition Design for General Behavioral Agents using Machine Learning". We provide code for modifying environment designs to mininimize the Worst-Case Distinctiveness (WCD) using our Lagrange-based Gradient Descent approach. The provided code covers the different behavioral settings in our paper: optimal agents, suboptimal agents with hyperbolic discounting, and human behavior data.
+This repository contains the code and data to reproduce results for the paper []"Goal Recognition Design for General Behavioral Agents using Machine Learning"](https://openreview.net/forum?id=GDuWBhvMid). We provide code for modifying environment designs to mininimize the Worst-Case Distinctiveness (WCD) using our Lagrange-based Gradient Descent approach. The provided code covers the different behavioral settings in our paper: optimal agents, suboptimal agents with hyperbolic discounting, and human behavior data.
 
 ## Overview
 
